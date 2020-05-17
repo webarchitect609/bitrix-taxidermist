@@ -6,7 +6,7 @@ Changelog
 
 ### Добавлено:
 - Основная функциональность изготовления имитаций через метод
-    `\WebArch\BitrixTaxidermist\Test\Taxidermist::taxidermize()`
+    `\WebArch\BitrixTaxidermist\Taxidermist::taxidermize()`
 - Имитации классов:
     - `\Bitrix\Main\SystemException`
     - `\Bitrix\Main\Application`
