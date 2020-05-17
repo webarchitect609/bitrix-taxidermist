@@ -4,20 +4,12 @@ Changelog
 0.0.1
 -----
 
-### Added:
-- New features
-
-### Changed:
-- Changes in existing functionality
-
-### Deprecated:
-- Soon-to-be removed features
-
-### Removed:
-- Now removed features
-
-### Fixed:
-- Any bug fixes
-
-### Security:
-- In case of vulnerabilities
+### Добавлено:
+- Основная функциональность изготовления имитаций через метод
+    `\WebArch\BitrixTaxidermist\Test\Taxidermist::taxidermize()`
+- Имитации классов:
+    - `\Bitrix\Main\SystemException`
+    - `\Bitrix\Main\Application`
+    - `\Bitrix\Main\HttpApplication`
+    - `\Bitrix\Main\Data\Cache`
+    - `\Bitrix\Main\Data\TaggedCache`

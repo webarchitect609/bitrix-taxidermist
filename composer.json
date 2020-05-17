@@ -1,6 +1,6 @@
 {
-  "name": "webarchitect609/composer-library-skeleton",
-  "description": "My composer library skeleton.",
+  "name": "webarchitect609/bitrix-taxidermist",
+  "description": "Mocking of Bitrix classes for Unit-testing.",
   "type": "library",
   "license": "BSD-3-Clause",
   "authors": [
@@ -11,21 +11,21 @@
     }
   ],
   "require": {
-    "php": "^7.3"
+    "php": "^7.2"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.16",
-    "phpunit/phpunit": "^9.1",
+    "phpunit/phpunit": "^8.5",
     "roave/security-advisories": "dev-master"
   },
   "autoload": {
     "psr-4": {
-      "WebArch\\Skeleton\\": "src/main"
+      "WebArch\\BitrixTaxidermist\\": "src/main"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "WebArch\\Skeleton\\Test\\": "src/test"
+      "WebArch\\BitrixTaxidermist\\Test\\": "src/test"
     }
   },
   "scripts": {

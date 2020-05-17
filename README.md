@@ -1,40 +1,55 @@
-Composer Library Skeleton
-=========================
-[![Travis Build Status](https://travis-ci.org/webarchitect609/composer-library-skeleton.svg?branch=master)](https://travis-ci.org/webarchitect609/composer-library-skeleton)
-[![Latest version](https://img.shields.io/github/v/tag/webarchitect609/composer-library-skeleton?sort=semver)](https://github.com/webarchitect609/composer-library-skeleton/releases)
-[![Downloads](https://img.shields.io/packagist/dt/webarchitect609/composer-library-skeleton)](https://packagist.org/packages/webarchitect609/composer-library-skeleton)
-[![PHP version](https://img.shields.io/packagist/php-v/webarchitect609/composer-library-skeleton)](https://www.php.net/supported-versions.php)
-[![License](https://img.shields.io/github/license/webarchitect609/composer-library-skeleton)](LICENSE.md)
+Битрикс таксидермист
+====================
+[![Travis Build Status](https://travis-ci.org/webarchitect609/bitrix-taxidermist.svg?branch=master)](https://travis-ci.org/webarchitect609/bitrix-taxidermist)
+[![Latest version](https://img.shields.io/github/v/tag/webarchitect609/bitrix-taxidermist?sort=semver)](https://github.com/webarchitect609/bitrix-taxidermist/releases)
+[![Downloads](https://img.shields.io/packagist/dt/webarchitect609/bitrix-taxidermist)](https://packagist.org/packages/webarchitect609/bitrix-taxidermist)
+[![PHP version](https://img.shields.io/packagist/php-v/webarchitect609/bitrix-taxidermist)](https://www.php.net/supported-versions.php)
+[![License](https://img.shields.io/github/license/webarchitect609/bitrix-taxidermist)](LICENSE.md)
 [![More stuff from me](https://img.shields.io/badge/packagist-webarchitect609-blueviolet)](https://packagist.org/packages/webarchitect609/)
 
-**Please, be careful:** this is non-stable alpha version so far!
+**Пожалуйста, будьте внимательны:** это пока нестабильная альфа-версия!
 
-The template for PHP composer library.
+Создание имитаций(mocking) классов Битрикс для Unit-тестов.
 
-Features
---------
-- [PHP Coding Standards Fixer](https://packagist.org/packages/friendsofphp/php-cs-fixer), including [PhpStorm](https://www.jetbrains.com/phpstorm/) integration
-- [Travis CI](https://travis-ci.org/)
-- [PHPUnit](https://phpunit.de/) (try `composer test`)
-- Used packages security check by [Roave Security Advisories](https://packagist.org/packages/roave/security-advisories)
-    (try `composer check:security`)
+Возможности
+-----------
+- Лёгкое создание mock-классов Битрикс, причём таким образом, который не приводит к дублированию определений классов
+при разработке.
     
-Installation
-------------
-`composer require webarchitect609/composer-library-skeleton`
+Установка
+---------
+`composer require --dev webarchitect609/bitrix-taxidermist`
 
-Usage
------
-1. [Use this template](https://github.com/webarchitect609/composer-library-skeleton/generate) directly on GitHub or
-clone this repo.
-2. Update, remove or add anything to create a new PHP composer library with the help of this template.
-3. Consider writing [PHPUnit tests](https://phpunit.de/).
-4. Consider setup [Travis CI](https://travis-ci.org/), which is free for Open Source projects.
+Использование
+-------------
+При переопределении метода `\PHPUnit\Framework\TestCase::setUp()` или `\PHPUnit\Framework\TestCase::setUpBeforeClass()`
+или непосредственно в коде теста следует указать какие классы нужно имитировать, указав их mock-версии:
 
-Known Issues
-------------
-None so far.
+```php
+use WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\Data\Cache;
+use WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\Data\TaggedCache;
+use WebArch\BitrixTaxidermist\Taxidermist;
 
-Licence & Author Information
-----------------------------
+Taxidermist::taxidermize(Cache::class);
+Taxidermist::taxidermize(TaggedCache::class);
+
+```
+
+Динамически будут созданы необходимые алиасы:
+
+```php
+/** @noinspection ALL */
+
+class_alias('\WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\Data\Cache', '\Bitrix\Main\Data\Cache');
+class_alias('\WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\Data\TaggedCache', '\Bitrix\Main\Data\TaggedCache');
+```
+
+И Unit-тест может пользоваться этими классами точно также, как если бы в его распоряжении был установленный Битрикс.
+
+Известные особенности
+---------------------
+Пока отсутствуют.
+
+Лицензия и информация об авторе
+-------------------------------
 [BSD-3-Clause](LICENSE.md)
