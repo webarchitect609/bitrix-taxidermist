@@ -1,0 +1,42 @@
+{
+  "name": "webarchitect609/composer-library-skeleton",
+  "description": "My composer library skeleton.",
+  "type": "library",
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Sergey Gripinskiy",
+      "email": "web-architect@mail.ru",
+      "role": "Creator"
+    }
+  ],
+  "require": {
+    "php": "^7.3"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^2.16",
+    "phpunit/phpunit": "^9.1",
+    "roave/security-advisories": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "WebArch\\Skeleton\\": "src/main"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "WebArch\\Skeleton\\Test\\": "src/test"
+    }
+  },
+  "scripts": {
+    "check:security": "@composer update --dry-run roave/security-advisories",
+    "test": "vendor/bin/phpunit"
+  },
+  "scripts-descriptions": {
+    "check:security": "Manual security check via roave/security-advisories",
+    "test": "Run all UnitTests."
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
