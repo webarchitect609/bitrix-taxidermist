@@ -26,8 +26,8 @@
 или непосредственно в коде теста следует указать какие классы нужно имитировать, указав их mock-версии:
 
 ```php
-use WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\Data\Cache;
-use WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\Data\TaggedCache;
+use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\Cache;
+use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\TaggedCache;
 use WebArch\BitrixTaxidermist\Taxidermist;
 
 Taxidermist::taxidermize(Cache::class);
@@ -40,15 +40,31 @@ Taxidermist::taxidermize(TaggedCache::class);
 ```php
 /** @noinspection ALL */
 
-class_alias('\WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\Data\Cache', '\Bitrix\Main\Data\Cache');
-class_alias('\WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\Data\TaggedCache', '\Bitrix\Main\Data\TaggedCache');
+class_alias('\WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\Cache', '\Bitrix\Main\Data\Cache');
+class_alias('\WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\TaggedCache', '\Bitrix\Main\Data\TaggedCache');
 ```
 
 И Unit-тест может пользоваться этими классами точно также, как если бы в его распоряжении был установленный Битрикс.
 
+
 Известные особенности
 ---------------------
-Пока отсутствуют.
+
+### Ошибка при вызове `\Bitrix\Main\Application::getInstance()`
+
+Если необходимо работать с `\Bitrix\Main\Application::getInstance()`, он будет вызывать ошибку:
+```
+Error : Cannot instantiate abstract class WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Application
+```
+Чтобы этого избежать, после всех `\WebArch\BitrixTaxidermist\Taxidermist::taxidermize()` следует создать требуемый
+объект приложения. Например, так:
+
+```php
+use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\HttpApplication;
+
+HttpApplication::getInstance();
+```
+
 
 Лицензия и информация об авторе
 -------------------------------
