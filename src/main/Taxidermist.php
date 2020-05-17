@@ -4,7 +4,7 @@ namespace WebArch\BitrixTaxidermist;
 
 class Taxidermist
 {
-    protected const MOCK_NAMESPACE = 'WebArch\BitrixTaxidermist\Test\Mock';
+    protected const MOCK_NAMESPACE = 'WebArch\BitrixTaxidermist\Mock';
 
     /**
      * Заменяет чучелом требуемый класс $class при помощи class_alias().

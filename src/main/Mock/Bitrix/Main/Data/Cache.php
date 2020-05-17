@@ -1,7 +1,7 @@
 <?php
 /** @noinspection PhpUnusedParameterInspection */
 
-namespace WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\Data;
+namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data;
 
 class Cache
 {

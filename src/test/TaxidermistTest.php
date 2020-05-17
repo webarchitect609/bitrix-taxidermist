@@ -3,12 +3,12 @@
 namespace WebArch\BitrixTaxidermist\Test;
 
 use PHPUnit\Framework\TestCase;
+use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Application;
+use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\Cache;
+use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\TaggedCache;
+use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\HttpApplication;
+use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\SystemException;
 use WebArch\BitrixTaxidermist\Taxidermist;
-use WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\Application;
-use WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\Data\Cache;
-use WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\Data\TaggedCache;
-use WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\HttpApplication;
-use WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\SystemException;
 
 class TaxidermistTest extends TestCase
 {

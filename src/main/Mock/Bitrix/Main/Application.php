@@ -1,9 +1,10 @@
 <?php
 /** @noinspection PhpDocRedundantThrowsInspection */
 
-namespace WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main;
+namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
 
-use WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\Data\TaggedCache;
+use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\TaggedCache;
+use WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\SystemException;
 
 abstract class Application
 {
@@ -15,7 +16,7 @@ abstract class Application
     /**
      * Tagged cache instance.
      *
-     * @var TaggedCache
+     * @var \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\TaggedCache
      */
     protected $taggedCache;
 
@@ -45,22 +46,22 @@ abstract class Application
     /**
      * Returns new instance of the Cache object.
      *
-     * @return Data\Cache
+     * @return \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\Cache
      */
     public function getCache()
     {
-        return Data\Cache::createInstance();
+        return \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\Cache::createInstance();
     }
 
     /**
      * Returns manager of the managed cache.
      *
-     * @return Data\TaggedCache
+     * @return \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\TaggedCache
      */
     public function getTaggedCache()
     {
         if ($this->taggedCache == null) {
-            $this->taggedCache = new Data\TaggedCache();
+            $this->taggedCache = new \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\TaggedCache();
         }
 
         return $this->taggedCache;

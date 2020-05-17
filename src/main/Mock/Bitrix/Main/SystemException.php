@@ -1,6 +1,6 @@
 <?php
 
-namespace WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main;
+namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
 
 use Exception;
 
