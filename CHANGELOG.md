@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.0.2
+-----
+
+### Исправлено:
+- Ошибка `PHP Warning: Cannot declare class` при повторном вызове
+    `\WebArch\BitrixTaxidermist\Taxidermist::taxidermize()` с тем же аргументом
+
 0.0.1
 -----
 

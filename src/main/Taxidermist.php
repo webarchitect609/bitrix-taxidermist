@@ -16,9 +16,10 @@ class Taxidermist
      */
     public static function taxidermize(string $class)
     {
-        class_alias(
-            $class,
-            str_replace(self::MOCK_NAMESPACE, '', $class)
-        );
+        $alias = str_replace(self::MOCK_NAMESPACE, '', $class);
+        if (class_exists($alias)) {
+            return;
+        }
+        class_alias($class, $alias);
     }
 }

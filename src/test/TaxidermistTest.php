@@ -42,4 +42,18 @@ class TaxidermistTest extends TestCase
             ['\Bitrix\Main\Data\TaggedCache', TaggedCache::class],
         ];
     }
+
+    /**
+     * @depends testTaxidermize
+     */
+    public function testTaxidermizeTwice()
+    {
+        /**
+         * Т.к. удалить алиас уже невозможно, этот тест поставлен в зависимость от testTaxidermize
+         */
+        Taxidermist::taxidermize(Application::class);
+        $this->assertTrue(
+            class_exists('\Bitrix\Main\Application')
+        );
+    }
 }
