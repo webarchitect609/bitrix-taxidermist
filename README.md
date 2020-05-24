@@ -9,12 +9,15 @@
 
 **Пожалуйста, будьте внимательны:** это пока нестабильная альфа-версия!
 
-Создание имитаций(mocking) классов Битрикс для Unit-тестов.
+Для разработки Unit-тестов библиотек, зависимых от Битрикс, требуется сам Битрикс. Однако его установка является долгим
+процессом, который контролируется через визуальный интерфейс в браузере и очень сложно поддаётся автоматизации. Данная
+библиотека предоставляет возможность автоматического создания имитаций(mocking) классов Битрикс без установки
+последнего. Одновременно решается проблема `Multiple definitions exist for class '%bitrixClassName%'` в IDE при
+разработке.
 
 Возможности
 -----------
-- Лёгкое создание mock-классов Битрикс, причём таким образом, который не приводит к дублированию определений классов
-при разработке.
+- Автоматическое создание mock-классов Битрикс для использование в Unit-тестах
     
 Установка
 ---------
@@ -22,30 +25,31 @@
 
 Использование
 -------------
-При переопределении метода `\PHPUnit\Framework\TestCase::setUp()` или `\PHPUnit\Framework\TestCase::setUpBeforeClass()`
-или непосредственно в коде теста следует указать какие классы нужно имитировать, указав их mock-версии:
+### Unit-тесты
+
+При написании Unit-теста в переопределении метода `\PHPUnit\Framework\TestCase::setUp()` или
+`\PHPUnit\Framework\TestCase::setUpBeforeClass()` следует запустить изготовление имитаций всех классов:
 
 ```php
-use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\Cache;
-use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\TaggedCache;
 use WebArch\BitrixTaxidermist\Taxidermist;
 
-Taxidermist::taxidermize(Cache::class);
-Taxidermist::taxidermize(TaggedCache::class);
+(new Taxidermist)->taxidermizeAll();
 
 ```
 
-Динамически будут созданы необходимые алиасы:
+Будут автоматически созданы алиасы. Например, 
 
 ```php
 /** @noinspection ALL */
-
 class_alias('\WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\Cache', '\Bitrix\Main\Data\Cache');
-class_alias('\WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\TaggedCache', '\Bitrix\Main\Data\TaggedCache');
 ```
 
-И Unit-тест может пользоваться этими классами точно также, как если бы в его распоряжении был установленный Битрикс.
+, и таким образом Unit-тест может пользоваться этими классами точно также, как если бы в его распоряжении был
+установленный Битрикс.
 
+### Статический анализ кода
+
+Следует указать файл `~/resources/autoload-dist.php` в качестве дополнительного файла автозагрузчика.
 
 Известные особенности
 ---------------------
@@ -54,17 +58,15 @@ class_alias('\WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\TaggedCache', '\Bi
 
 Если необходимо работать с `\Bitrix\Main\Application::getInstance()`, он будет вызывать ошибку:
 ```
-Error : Cannot instantiate abstract class WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Application
+Error: Cannot instantiate abstract class WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Application
 ```
-Чтобы этого избежать, после всех `\WebArch\BitrixTaxidermist\Taxidermist::taxidermize()` следует создать требуемый
-объект приложения. Например, так:
+Чтобы этого избежать, после подключения автозагрузчика следует создать требуемый объект приложения. Например, так:
 
 ```php
 use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\HttpApplication;
 
 HttpApplication::getInstance();
 ```
-
 
 Лицензия и информация об авторе
 -------------------------------

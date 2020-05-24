@@ -1,6 +1,23 @@
 Changelog
 =========
 
+0.1.0
+-----
+
+### Добавлено:
+- Методы `\WebArch\BitrixTaxidermist\Taxidermist::registerAutoload()` и
+    `\WebArch\BitrixTaxidermist\Taxidermist::removeAutoload()` для установки и удаления автозагрузчика классов
+    соответственно
+- Метод `\WebArch\BitrixTaxidermist\Taxidermist::taxidermizeAll()` для замены макетами всех поддерживаемых классов
+    Битрикс
+
+- Файл подключения автозагрузчика `~/resources/autoload-dist.php` для использования в библиотеках статического анализа
+    кода. Например, в [PHPStan](https://packagist.org/packages/phpstan/phpstan)
+
+### НАРУШЕНИЕ ОБРАТНОЙ СОВМЕСТИМОСТИ
+- Метод `\WebArch\BitrixTaxidermist\Taxidermist::taxidermize()` перестал быть статическим и теперь принимает в качестве
+    аргумента имя класса Битрикс, который должен быть превращён в имитацию(mock)
+
 0.0.2
 -----
 
