@@ -23,6 +23,8 @@ class TaxidermistTest extends TestCase
     /**
      * Этот тест обязательно должен быть самым первым,
      * иначе условие бесконечной рекурсии не будет выполнено.
+     *
+     * @return void
      */
     public function testTaxidermizeDoesNotReachMaxNestingLevel()
     {
@@ -35,6 +37,8 @@ class TaxidermistTest extends TestCase
 
     /**
      * @param string $bitrixClass
+     *
+     * @return void
      *
      * @dataProvider taxidermizeDataProvider
      * @depends      testTaxidermizeDoesNotReachMaxNestingLevel
@@ -53,7 +57,7 @@ class TaxidermistTest extends TestCase
     }
 
     /**
-     * @return array|string[]
+     * @return array<array>
      */
     public function taxidermizeDataProvider(): array
     {
@@ -66,6 +70,7 @@ class TaxidermistTest extends TestCase
 
     /**
      * @depends testTaxidermize
+     * @return void
      */
     public function testTaxidermizeTwice()
     {
@@ -80,6 +85,9 @@ class TaxidermistTest extends TestCase
         );
     }
 
+    /**
+     * @return void
+     */
     public function testTaxidermizeAll()
     {
         $className = 'Bitrix\Main\Data\TaggedCache';
@@ -88,6 +96,9 @@ class TaxidermistTest extends TestCase
         $this->assertTrue(class_exists($className));
     }
 
+    /**
+     * @return void
+     */
     public function testTaxidermizeNonExistingClass()
     {
         $this->assertNull(
@@ -97,12 +108,19 @@ class TaxidermistTest extends TestCase
         );
     }
 
+    /**
+     * @return void
+     */
     public function testRegisterAndRemoveAutoload()
     {
-        $fakeAutoloadAsClosure = function () {
+        $fakeAutoloadAsClosure = function (string $class) {
         };
+        /** @var callable<string> $fakeAutoloadAsClosure */
         spl_autoload_register($fakeAutoloadAsClosure);
         $expectedAutoloadFunctions = spl_autoload_functions();
+        if (false === $expectedAutoloadFunctions) {
+            $expectedAutoloadFunctions = [];
+        }
         $taxidermist = new Taxidermist();
         $expectedAutoloadFunctions[] = [($taxidermist), 'taxidermize'];
         $taxidermist->registerAutoload();
@@ -118,6 +136,9 @@ class TaxidermistTest extends TestCase
         );
     }
 
+    /**
+     * @return void
+     */
     public function testRegisterAutoloadTwice()
     {
         $taxidermist = new Taxidermist();
@@ -127,6 +148,9 @@ class TaxidermistTest extends TestCase
         $taxidermist->registerAutoload();
     }
 
+    /**
+     * @return void
+     */
     public function testRemoveAutoloadWhenIsNotSet()
     {
         $this->expectException(AutoloaderNotRegisteredException::class);
@@ -134,19 +158,23 @@ class TaxidermistTest extends TestCase
         (new Taxidermist())->removeAutoload();
     }
 
+    /**
+     * @return void
+     */
     public function testRegisterAutoloadError()
     {
         /** @var MockObject|Taxidermist $taxidermistMock */
         $taxidermistMock = $this->getMockBuilder(Taxidermist::class)
                                 ->onlyMethods(['getAutoloadCallable'])
                                 ->getMock();
-
+        /** @phpstan-ignore-next-line */
         $taxidermistMock->expects($this->exactly(2))
                         ->method('getAutoloadCallable')
                         ->willReturn([$taxidermistMock, 'nonExistingMethodName']);
 
         $this->expectException(ErrorRegisteringAutoloaderException::class);
         $this->expectExceptionCode(ErrorCode::ERROR_REGISTERING_AUTOLOADER);
+        /** @phpstan-ignore-next-line */
         $taxidermistMock->registerAutoload();
     }
 

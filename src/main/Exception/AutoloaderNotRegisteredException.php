@@ -19,5 +19,4 @@ class AutoloaderNotRegisteredException extends LogicException implements Taxider
             $previous
         );
     }
-
 }

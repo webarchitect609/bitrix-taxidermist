@@ -1,0 +1,7 @@
+parameters:
+    level: max # from 0 to 8, or 'max' as an alias for the highest level
+    paths:
+        - src/main
+        - src/test
+    excludes_analyse:
+        - src/main/Mock/*

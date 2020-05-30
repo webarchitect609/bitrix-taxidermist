@@ -19,5 +19,4 @@ class ErrorRegisteringAutoloaderException extends LogicException implements Taxi
             $previous
         );
     }
-
 }

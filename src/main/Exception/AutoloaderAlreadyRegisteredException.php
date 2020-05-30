@@ -19,5 +19,4 @@ class AutoloaderAlreadyRegisteredException extends LogicException implements Tax
             $previous
         );
     }
-
 }

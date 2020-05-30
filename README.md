@@ -60,7 +60,7 @@ class_alias('\WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\Cache', '\Bitrix\M
 ```
 Error: Cannot instantiate abstract class WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Application
 ```
-Чтобы этого избежать, после подключения автозагрузчика следует создать требуемый объект приложения. Например, так:
+Чтобы этого избежать, следует создать требуемый объект приложения. Например, так:
 
 ```php
 use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\HttpApplication;

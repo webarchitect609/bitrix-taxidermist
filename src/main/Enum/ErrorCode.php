@@ -9,5 +9,4 @@ class ErrorCode
     const AUTOLOADER_IS_ALREADY_REGISTERED = 2;
 
     const AUTOLOADER_NOT_REGISTERED = 3;
-
 }

@@ -3,8 +3,8 @@
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
 
+use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\Cache;
 use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\TaggedCache;
-use WebArch\BitrixTaxidermist\Test\Mock\Bitrix\Main\SystemException;
 
 abstract class Application
 {
@@ -16,7 +16,7 @@ abstract class Application
     /**
      * Tagged cache instance.
      *
-     * @var \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\TaggedCache
+     * @var TaggedCache
      */
     protected $taggedCache;
 
@@ -25,7 +25,6 @@ abstract class Application
      */
     protected function __construct()
     {
-
     }
 
     /**
@@ -46,22 +45,22 @@ abstract class Application
     /**
      * Returns new instance of the Cache object.
      *
-     * @return \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\Cache
+     * @return Cache
      */
     public function getCache()
     {
-        return \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\Cache::createInstance();
+        return Cache::createInstance();
     }
 
     /**
      * Returns manager of the managed cache.
      *
-     * @return \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\TaggedCache
+     * @return TaggedCache
      */
     public function getTaggedCache()
     {
         if ($this->taggedCache == null) {
-            $this->taggedCache = new \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\TaggedCache();
+            $this->taggedCache = new TaggedCache();
         }
 
         return $this->taggedCache;
