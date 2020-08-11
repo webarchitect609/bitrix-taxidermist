@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.1.1
+## 0.1.3
 
 ### Добавлено:
 - Добавлен макет метода `\Bitrix\Main\Data\Cache::getCacheEngineType()`
