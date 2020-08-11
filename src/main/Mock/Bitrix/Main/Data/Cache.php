@@ -3,6 +3,8 @@
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data;
 
+use WebArch\BitrixTaxidermist\Enum\CacheEngineType;
+
 class Cache
 {
     /**
@@ -88,5 +90,13 @@ class Cache
      */
     public function abortDataCache()
     {
+    }
+
+    /**
+     * @return string
+     */
+    public static function getCacheEngineType()
+    {
+        return CacheEngineType::MEMCACHE;
     }
 }

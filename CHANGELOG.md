@@ -1,8 +1,12 @@
-Changelog
-=========
+# Change Log
 
-0.1.0
------
+## 0.1.1
+
+### Добавлено:
+- Добавлен макет метода `\Bitrix\Main\Data\Cache::getCacheEngineType()`
+- Добавлено перечисление поддерживаемых Битриксом типов кеширования `\WebArch\BitrixTaxidermist\Enum\CacheEngineType`
+
+## 0.1.0
 
 ### Добавлено:
 - Методы `\WebArch\BitrixTaxidermist\Taxidermist::registerAutoload()` и
@@ -18,15 +22,13 @@ Changelog
 - Метод `\WebArch\BitrixTaxidermist\Taxidermist::taxidermize()` перестал быть статическим и теперь принимает в качестве
     аргумента имя класса Битрикс, который должен быть превращён в имитацию(mock)
 
-0.0.2
------
+## 0.0.2
 
 ### Исправлено:
 - Ошибка `PHP Warning: Cannot declare class` при повторном вызове
     `\WebArch\BitrixTaxidermist\Taxidermist::taxidermize()` с тем же аргументом
 
-0.0.1
------
+## 0.0.1
 
 ### Добавлено:
 - Основная функциональность изготовления имитаций через метод
