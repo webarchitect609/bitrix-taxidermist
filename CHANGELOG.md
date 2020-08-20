@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.1.4
+
+### Добавлено:
+- Макеты методов `\Bitrix\Main\ORM\Fields\Field::getName()` и `\Bitrix\Main\ORM\Fields\Field::getEntity()` и
+    соответствующие им поля.
+
 ## 0.1.3
 
 ### Добавлено:
