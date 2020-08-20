@@ -48,6 +48,18 @@ class Query
     }
 
     /**
+     * Sets a limit for LIMIT n clause
+     *
+     * @param int $limit
+     *
+     * @return Query
+     */
+    public function setLimit($limit)
+    {
+        return $this;
+    }
+
+    /**
      * Builds and executes the query and returns the result
      *
      * @throws ObjectPropertyException

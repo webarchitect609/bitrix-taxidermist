@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.6
+### Добавлено:
+- Добавлены методы `CDBResultMysql::Fetch()` и `\Bitrix\Main\ORM\Query\Query::setLimit()`
+
 ## 0.1.5
 
 ### Добавлено:
