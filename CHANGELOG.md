@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.1.5
+
+### Добавлено:
+- Добавлены макеты `CUserTypeEntity`, `CDBResult`, `CUserTypeEntity` и другие.
+
 ## 0.1.4
 
 ### Добавлено:

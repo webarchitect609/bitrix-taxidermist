@@ -16,12 +16,33 @@ abstract class Field
 
     /**
      * @param string $name
-     * @param array $parameters deprecated, use configure* and add* methods instead
+     * @param array<string, mixed> $parameters deprecated, use configure* and add* methods instead
      *
      * @throws SystemException
      */
     public function __construct($name, $parameters = [])
     {
+    }
+
+    /**
+     * @param callable $modifier
+     *
+     * @throws SystemException
+     * @return Field
+     * @noinspection PhpUnusedParameterInspection
+     */
+    public function addFetchDataModifier($modifier)
+    {
+        return $this;
+    }
+
+    /**
+     * Called after being initialized by Entity
+     * @return null
+     */
+    public function postInitialize()
+    {
+        return null;
     }
 
     /**

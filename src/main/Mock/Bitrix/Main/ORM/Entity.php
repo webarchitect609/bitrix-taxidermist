@@ -7,4 +7,11 @@ namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ORM;
  */
 class Entity
 {
+    /**
+     * @return string
+     */
+    public function getDBTableName()
+    {
+        return '';
+    }
 }
