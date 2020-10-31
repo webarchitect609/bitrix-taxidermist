@@ -7,6 +7,8 @@ use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\SystemException;
 
 abstract class ScalarField extends Field implements IStorable
 {
+    protected $column_name = '';
+
     /**
      * ScalarField constructor.
      *
@@ -14,6 +16,7 @@ abstract class ScalarField extends Field implements IStorable
      * @param array<string, mixed> $parameters deprecated, use configure* and add* methods instead
      *
      * @throws SystemException
+     * @noinspection PhpMissingParamTypeInspection
      */
     public function __construct($name, $parameters = [])
     {
@@ -25,6 +28,7 @@ abstract class ScalarField extends Field implements IStorable
      *
      * @return $this
      * @noinspection PhpUnusedParameterInspection
+     * @noinspection PhpMissingParamTypeInspection
      */
     public function configureRequired($value)
     {
@@ -44,6 +48,7 @@ abstract class ScalarField extends Field implements IStorable
      *
      * @return $this
      * @noinspection PhpUnusedParameterInspection
+     * @noinspection PhpMissingParamTypeInspection
      */
     public function configureDefaultValue($value)
     {
@@ -55,6 +60,7 @@ abstract class ScalarField extends Field implements IStorable
      *
      * @return null|callable|mixed
      * @noinspection PhpUnusedParameterInspection
+     * @noinspection PhpDocSignatureInspection
      */
     public function getDefaultValue($row = null)
     {
@@ -73,5 +79,19 @@ abstract class ScalarField extends Field implements IStorable
         }
 
         return (strval($value) === '');
+    }
+
+    public function getColumnName()
+    {
+        return $this->column_name;
+    }
+
+    /**
+     * @param string $column_name
+     *
+     * @noinspection PhpMissingParamTypeInspection*/
+    public function setColumnName($column_name)
+    {
+        $this->column_name = $column_name;
     }
 }

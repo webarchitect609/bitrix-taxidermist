@@ -1,6 +1,14 @@
 # Change Log
 
+## 0.1.7
+
+### Добавлено:
+- Макет класса `\Bitrix\Main\ORM\Fields\ExpressionField`
+- Расширены `\Bitrix\Main\DB\SqlExpression`, `\Bitrix\Main\ORM\Fields\ScalarField`,
+    `\WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ORM\Fields\Field`
+
 ## 0.1.6
+
 ### Добавлено:
 - Добавлены методы `CDBResultMysql::Fetch()` и `\Bitrix\Main\ORM\Query\Query::setLimit()`
 
