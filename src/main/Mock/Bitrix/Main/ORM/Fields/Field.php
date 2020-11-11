@@ -17,6 +17,9 @@ abstract class Field
     /** @var null|callback[] */
     protected $saveDataModifiers;
 
+    /** @var string */
+    protected $dataType;
+
     /**
      * @param string $name
      * @param array<string, mixed> $parameters deprecated, use configure* and add* methods instead
@@ -86,5 +89,14 @@ abstract class Field
     public function addSaveDataModifier($modifier)
     {
         return $this;
+    }
+
+    /**
+     * @return null|string
+     * @deprecated
+     */
+    public function getDataType()
+    {
+        return $this->dataType;
     }
 }
