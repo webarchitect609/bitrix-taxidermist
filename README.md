@@ -1,6 +1,6 @@
 Битрикс таксидермист
 ====================
-[![Travis Build Status](https://travis-ci.org/webarchitect609/bitrix-taxidermist.svg?branch=master)](https://travis-ci.org/webarchitect609/bitrix-taxidermist)
+[![Travis Build Status](https://travis-ci.com/webarchitect609/bitrix-taxidermist.svg?branch=master)](https://travis-ci.com/webarchitect609/bitrix-taxidermist)
 [![Latest version](https://img.shields.io/github/v/tag/webarchitect609/bitrix-taxidermist?sort=semver)](https://github.com/webarchitect609/bitrix-taxidermist/releases)
 [![Downloads](https://img.shields.io/packagist/dt/webarchitect609/bitrix-taxidermist)](https://packagist.org/packages/webarchitect609/bitrix-taxidermist)
 [![PHP version](https://img.shields.io/packagist/php-v/webarchitect609/bitrix-taxidermist)](https://www.php.net/supported-versions.php)
