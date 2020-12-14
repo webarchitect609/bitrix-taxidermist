@@ -6,6 +6,9 @@
       <option name="CUSTOM_RULESET_PATH" value="$PROJECT_DIR$/.php_cs.dist" />
       <option name="ALLOW_RISKY_RULES" value="true" />
     </inspection_tool>
+    <inspection_tool class="PhpStanGlobal" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="config" value="$PROJECT_DIR$/phpstan.neon.dist" />
+    </inspection_tool>
     <inspection_tool class="PhpUnused" enabled="true" level="WEAK WARNING" enabled_by_default="true" method_visibility="protected">
       <option name="CLASS" value="false" />
     </inspection_tool>
