@@ -1,5 +1,14 @@
 # Change Log
 
+0.1.13
+------
+
+### Добавлено
+
+- правила корзины: `\CGlobalCondCtrl`, `\CGlobalCondCtrlGroup`;
+- система событий: `\Bitrix\Main\Event`, `\Bitrix\Main\EventManager`, `\Bitrix\Main\EventResult`;
+- тип исключений: `\Bitrix\Main\ArgumentTypeException`.
+
 0.1.12
 ------
 
