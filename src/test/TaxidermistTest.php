@@ -115,7 +115,7 @@ class TaxidermistTest extends TestCase
     {
         $fakeAutoloadAsClosure = function (string $class) {
         };
-        /** @var callable<string> $fakeAutoloadAsClosure */
+        /** @var callable $fakeAutoloadAsClosure */
         spl_autoload_register($fakeAutoloadAsClosure);
         $expectedAutoloadFunctions = spl_autoload_functions();
         if (false === $expectedAutoloadFunctions) {
