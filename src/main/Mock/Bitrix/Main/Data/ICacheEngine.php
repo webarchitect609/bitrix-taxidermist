@@ -12,8 +12,8 @@ interface ICacheEngine
 
     /**
      * @param string $baseDir
-     * @param string|bool $initDir
-     * @param string|bool $filename
+     * @param bool|string $initDir
+     * @param bool|string $filename
      *
      * @return void
      */

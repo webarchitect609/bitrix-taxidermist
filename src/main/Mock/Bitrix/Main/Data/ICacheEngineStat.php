@@ -6,12 +6,12 @@ namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data;
 interface ICacheEngineStat
 {
     /**
-     * @return integer|false
+     * @return false|integer
      */
     public function getReadBytes();
 
     /**
-     * @return integer|false
+     * @return false|integer
      */
     public function getWrittenBytes();
 
