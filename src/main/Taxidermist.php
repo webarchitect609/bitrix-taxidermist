@@ -126,7 +126,7 @@ class Taxidermist
             return false;
         }
         $mockClass = self::MOCK_NAMESPACE . ltrim($bitrixClass, '\\');
-        if (!class_exists($mockClass)) {
+        if (!class_exists($mockClass) && !interface_exists($mockClass) && !trait_exists($mockClass)) {
             self::$classExistsCalled = false;
 
             return null;
