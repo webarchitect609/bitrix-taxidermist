@@ -120,7 +120,7 @@ class Taxidermist
             return null;
         }
         self::$classExistsCalled = true;
-        if (class_exists($bitrixClass)) {
+        if (class_exists($bitrixClass) || interface_exists($bitrixClass) || trait_exists($bitrixClass)) {
             self::$classExistsCalled = false;
 
             return false;
