@@ -97,6 +97,41 @@ class TaxidermistTest extends TestCase
     }
 
     /**
+     * @depends testTaxidermize
+     * @return void
+     */
+    public function testTaxidermizeInterface()
+    {
+        $interfaceName = 'Bitrix\Main\Data\ICacheEngine';
+
+        $this->assertFalse(
+            (new Taxidermist())->taxidermize($interfaceName)
+        );
+        $this->assertTrue(
+            interface_exists($interfaceName)
+        );
+    }
+
+    /**
+     * @depends testTaxidermize
+     * @return void
+     */
+    public function testTaxidermizeTrait()
+    {
+        $traitName = 'Bitrix\Main\ErrorableImplementation';
+
+        // Внутренняя зависимость
+        (new Taxidermist())->taxidermize('Bitrix\Main\Type\Dictionary');
+
+        $this->assertFalse(
+            (new Taxidermist())->taxidermize($traitName)
+        );
+        $this->assertTrue(
+            trait_exists($traitName)
+        );
+    }
+    
+    /**
      * @return void
      */
     public function testTaxidermizeNonExistingClass()
