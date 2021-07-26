@@ -97,7 +97,6 @@ class TaxidermistTest extends TestCase
     }
 
     /**
-     * @depends testTaxidermize
      * @return void
      */
     public function testTaxidermizeInterface()
@@ -113,15 +112,11 @@ class TaxidermistTest extends TestCase
     }
 
     /**
-     * @depends testTaxidermize
      * @return void
      */
     public function testTaxidermizeTrait()
     {
         $traitName = 'Bitrix\Main\ErrorableImplementation';
-
-        // Внутренняя зависимость
-        (new Taxidermist())->taxidermize('Bitrix\Main\Type\Dictionary');
 
         $this->assertFalse(
             (new Taxidermist())->taxidermize($traitName)

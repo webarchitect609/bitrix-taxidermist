@@ -7,7 +7,11 @@
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Type;
 
-class Dictionary implements \ArrayAccess, \Iterator, \Countable
+use ArrayAccess;
+use Countable;
+use Iterator;
+
+class Dictionary implements ArrayAccess, Iterator, Countable
 {
     /**
      * @var array
@@ -17,7 +21,7 @@ class Dictionary implements \ArrayAccess, \Iterator, \Countable
     /**
      * Creates object.
      *
-     * @param array $values
+     * @param null|array $values
      */
     public function __construct(array $values = null)
     {

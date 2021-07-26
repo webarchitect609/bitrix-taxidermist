@@ -4,6 +4,7 @@
 /** @noinspection PhpDocRedundantThrowsInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpMissingParamTypeInspection */
+/** @noinspection PhpMissingParentConstructorInspection */
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
 
@@ -13,6 +14,7 @@ class ErrorCollection extends Dictionary
 {
     /**
      * Constructor ErrorCollection.
+     *
      * @param Error[] $values Initial errors in the collection.
      */
     public function __construct(array $values = null)
@@ -41,7 +43,7 @@ class ErrorCollection extends Dictionary
     /**
      * Adds an error to the collection.
      * @param Error $error An error object.
-     * @param $offset Offset in the array.
+     * @param $offset. Offset in the array.
      * @return void
      */
     public function setError(Error $error, $offset = null)
