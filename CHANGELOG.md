@@ -14,6 +14,13 @@
 - поддержка интерфейсов
 - поддержка трейтов
 
+0.1.14
+------
+
+# Добавлено
+
+- интерфейсы: `\Bitrix\Main\Data\ICacheEngine` и `\Bitrix\Main\Data\ICacheEngineStat`
+
 0.1.13
 ------
 

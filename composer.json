@@ -8,6 +8,11 @@
       "name": "Sergey Gripinskiy",
       "email": "web-architect@mail.ru",
       "role": "Creator"
+    },
+    {
+      "name": "Aleksey Vasilenko",
+      "email": "aleksey.vasilenko34@gmail.com",
+      "role": "Contributor"
     }
   ],
   "require": {
