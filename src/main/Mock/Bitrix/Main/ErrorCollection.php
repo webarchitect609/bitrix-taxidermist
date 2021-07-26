@@ -43,7 +43,7 @@ class ErrorCollection extends Dictionary
     /**
      * Adds an error to the collection.
      * @param Error $error An error object.
-     * @param $offset. Offset in the array.
+     * @param null|int|string $offset. Offset in the array.
      * @return void
      */
     public function setError(Error $error, $offset = null)

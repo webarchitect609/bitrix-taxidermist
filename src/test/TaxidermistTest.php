@@ -88,24 +88,16 @@ class TaxidermistTest extends TestCase
     /**
      * @return void
      */
-    public function testTaxidermizeAll()
-    {
-        $className = 'Bitrix\Main\Data\TaggedCache';
-        $this->assertFalse(class_exists($className));
-        (new Taxidermist())->taxidermizeAll();
-        $this->assertTrue(class_exists($className));
-    }
-
-    /**
-     * @return void
-     */
     public function testTaxidermizeInterface()
     {
         $interfaceName = 'Bitrix\Main\Data\ICacheEngine';
 
         $this->assertFalse(
-            (new Taxidermist())->taxidermize($interfaceName)
+            interface_exists($interfaceName)
         );
+
+        (new Taxidermist())->taxidermize($interfaceName);
+
         $this->assertTrue(
             interface_exists($interfaceName)
         );
@@ -119,13 +111,27 @@ class TaxidermistTest extends TestCase
         $traitName = 'Bitrix\Main\ErrorableImplementation';
 
         $this->assertFalse(
-            (new Taxidermist())->taxidermize($traitName)
+            trait_exists($traitName)
         );
+
+        (new Taxidermist())->taxidermize($traitName);
+
         $this->assertTrue(
             trait_exists($traitName)
         );
     }
-    
+
+    /**
+     * @return void
+     */
+    public function testTaxidermizeAll()
+    {
+        $className = 'Bitrix\Main\Data\TaggedCache';
+        $this->assertFalse(class_exists($className));
+        (new Taxidermist())->taxidermizeAll();
+        $this->assertTrue(class_exists($className));
+    }
+
     /**
      * @return void
      */
