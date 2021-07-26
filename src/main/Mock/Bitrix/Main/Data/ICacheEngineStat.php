@@ -1,5 +1,9 @@
 <?php
+/** @noinspection PhpUnused */
 /** @noinspection PhpUnusedParameterInspection */
+/** @noinspection PhpDocRedundantThrowsInspection */
+/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpMissingParamTypeInspection */
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data;
 

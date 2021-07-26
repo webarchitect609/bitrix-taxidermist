@@ -1,5 +1,19 @@
 # Change Log
 
+0.1.16
+------
+
+### Добавлено
+
+- интерфейсы для классов кеширования: `\Bitrix\Main\Data\ICacheEngine`, `\Bitrix\Main\Data\ICacheEngine`;
+- класс типа данных словарь: `\Bitrix\Main\Type\Dictionary`;
+- классы ошибок: `\Bitrix\Main\Error`, `\Bitrix\Main\ErrorCollection`;
+- трейт: `\Bitrix\Main\ErrorableImplementation`;
+
+### Исправлено
+- поддержка интерфейсов
+- поддержка трейтов
+
 0.1.14
 ------
 

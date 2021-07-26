@@ -120,13 +120,13 @@ class Taxidermist
             return null;
         }
         self::$classExistsCalled = true;
-        if (class_exists($bitrixClass)) {
+        if (class_exists($bitrixClass) || interface_exists($bitrixClass) || trait_exists($bitrixClass)) {
             self::$classExistsCalled = false;
 
             return false;
         }
         $mockClass = self::MOCK_NAMESPACE . ltrim($bitrixClass, '\\');
-        if (!class_exists($mockClass)) {
+        if (!class_exists($mockClass) && !interface_exists($mockClass) && !trait_exists($mockClass)) {
             self::$classExistsCalled = false;
 
             return null;
