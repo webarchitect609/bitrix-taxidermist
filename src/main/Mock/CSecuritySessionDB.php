@@ -12,7 +12,7 @@ class CSecuritySessionDB
     /**
      * @var null
      */
-    protected static $sessionId = null;
+    protected static $sessionId;
 
     /**
      * @return bool

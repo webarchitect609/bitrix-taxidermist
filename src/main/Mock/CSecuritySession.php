@@ -11,7 +11,7 @@ class CSecuritySession
     /**
      * @var null|string
      */
-    protected static $oldSessionId = null;
+    protected static $oldSessionId;
 
     /**
      * @return void

@@ -31,7 +31,7 @@ class Dictionary implements ArrayAccess, Iterator, Countable
      * Returns any variable by its name. Null if variable is not set.
      *
      * @param string $name
-     * @return string | array | null
+     * @return null|array|string
      */
     public function get($name)
     {

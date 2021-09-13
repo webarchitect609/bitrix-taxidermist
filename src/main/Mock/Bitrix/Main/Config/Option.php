@@ -17,7 +17,7 @@ class Option
     /**
      * @var null|int
      */
-    protected static $cacheTtl = null;
+    protected static $cacheTtl;
 
     /**
      * Returns a value of an option.

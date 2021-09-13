@@ -8,12 +8,12 @@ use Memcache;
 class CSecuritySessionMC
 {
     /** @var Memcache */
-    protected static $connection = null;
+    protected static $connection;
 
     /**
      * @var string
      */
-    protected static $sessionId = null;
+    protected static $sessionId;
 
     /**
      * @var bool

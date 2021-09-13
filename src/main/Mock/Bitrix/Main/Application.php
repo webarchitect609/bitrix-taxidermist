@@ -11,7 +11,7 @@ abstract class Application
     /**
      * @var Application
      */
-    protected static $instance = null;
+    protected static $instance;
 
     /**
      * Tagged cache instance.
