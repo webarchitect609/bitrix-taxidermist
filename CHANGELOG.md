@@ -1,5 +1,12 @@
 # Change Log
 
+0.1.17
+------
+
+### Добавлено
+
+- типы данных: `\Bitrix\Main\Type\DateTime` и `\Bitrix\Main\Type\Date`.
+
 0.1.16
 ------
 
