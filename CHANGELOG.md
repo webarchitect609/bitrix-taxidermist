@@ -1,5 +1,12 @@
 # Change Log
 
+0.1.18
+------
+
+### Исправлено:
+
+- `\Bitrix\Main\Type\DateTime` не наследовался от `\Bitrix\Main\Type\Date`.
+
 0.1.17
 ------
 

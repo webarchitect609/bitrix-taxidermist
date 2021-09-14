@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpMissingParentConstructorInspection */
 /** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpMissingParamTypeInspection */
@@ -10,7 +11,7 @@ use DateTimeZone;
 use WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
 use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Context;
 
-class DateTime
+class DateTime extends Date
 {
     /**
      * @param string $time String representation of datetime.
