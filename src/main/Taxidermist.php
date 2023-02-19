@@ -88,7 +88,7 @@ class Taxidermist
                 $this->getAutoloadCallableAsString()
             );
         }
-        /** @var array<array> $functions */
+        /** @var array<callable> $functions */
         $functions = spl_autoload_functions();
         foreach ($functions as $function) {
             if (!is_array($function) || count($function) !== 2) {

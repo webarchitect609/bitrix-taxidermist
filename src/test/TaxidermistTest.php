@@ -154,6 +154,7 @@ class TaxidermistTest extends TestCase
         /** @var callable $fakeAutoloadAsClosure */
         spl_autoload_register($fakeAutoloadAsClosure);
         $expectedAutoloadFunctions = spl_autoload_functions();
+        /** @phpstan-ignore-next-line since php8 it is always array */
         if (false === $expectedAutoloadFunctions) {
             $expectedAutoloadFunctions = [];
         }
