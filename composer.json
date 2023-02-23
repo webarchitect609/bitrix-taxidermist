@@ -1,5 +1,5 @@
 {
-  "name": "webarchitect609/bitrix-taxidermist",
+  "name": "positron48/bitrix-taxidermist",
   "description": "Mocking of Bitrix classes for Unit-testing.",
   "type": "library",
   "license": "BSD-3-Clause",
@@ -12,6 +12,11 @@
     {
       "name": "Aleksey Vasilenko",
       "email": "aleksey.vasilenko34@gmail.com",
+      "role": "Contributor"
+    },
+    {
+      "name": "Anton Filatov",
+      "email": "positron48@gmail.com",
       "role": "Contributor"
     }
   ],

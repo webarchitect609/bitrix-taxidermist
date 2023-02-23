@@ -21,7 +21,7 @@
     
 Установка
 ---------
-`composer require --dev webarchitect609/bitrix-taxidermist`
+`composer require --dev positron48/bitrix-taxidermist`
 
 Использование
 -------------
