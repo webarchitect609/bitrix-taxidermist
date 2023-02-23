@@ -152,10 +152,16 @@ class Taxidermist
     {
         $autoloadCallable = $this->getAutoloadCallable();
 
+        /** @var object $class */
+        $class = $autoloadCallable[0];
+
+        /** @var string $method */
+        $method = $autoloadCallable[1];
+
         return sprintf(
             '%s::%s()',
-            get_class($autoloadCallable[0]),
-            $autoloadCallable[1]
+            get_class($class),
+            $method
         );
     }
 }

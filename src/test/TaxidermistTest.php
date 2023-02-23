@@ -57,7 +57,7 @@ class TaxidermistTest extends TestCase
     }
 
     /**
-     * @return array<array>
+     * @return array<array<string>>
      */
     public function taxidermizeDataProvider(): array
     {
