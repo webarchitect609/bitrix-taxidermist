@@ -1,4 +1,6 @@
 <?php
+
+/** @noinspection PhpUnused */
 /** @noinspection PhpUnusedParameterInspection */
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data;
@@ -8,6 +10,11 @@ use WebArch\BitrixTaxidermist\Enum\CacheEngineType;
 class Cache
 {
     /**
+     * @var bool
+     */
+    protected $hasOutput = true;
+
+    /**
      * @return Cache
      */
     public static function createInstance()
@@ -16,10 +23,10 @@ class Cache
     }
 
     /**
-     * @param int $TTL
-     * @param string $uniqueString
+     * @param int         $TTL
+     * @param string      $uniqueString
      * @param bool|string $initDir
-     * @param string $baseDir
+     * @param string      $baseDir
      *
      * @return bool
      */
@@ -29,11 +36,11 @@ class Cache
     }
 
     /**
-     * @param bool|int $TTL
+     * @param bool|int    $TTL
      * @param bool|string $uniqueString
      * @param bool|string $initDir
-     * @param array $vars
-     * @param string $baseDir
+     * @param array       $vars
+     * @param string      $baseDir
      *
      * @return bool
      */
@@ -66,7 +73,7 @@ class Cache
 
     /**
      * @param bool|string $initDir
-     * @param string $baseDir
+     * @param string      $baseDir
      *
      * @return void
      */
@@ -75,9 +82,9 @@ class Cache
     }
 
     /**
-     * @param string $uniqueString
+     * @param string      $uniqueString
      * @param bool|string $initDir
-     * @param string $baseDir
+     * @param string      $baseDir
      *
      * @return void
      */
@@ -98,5 +105,19 @@ class Cache
     public static function getCacheEngineType()
     {
         return CacheEngineType::MEMCACHE;
+    }
+
+    /**
+     * @return void But may make "echo"!
+     */
+    public function output()
+    {
+    }
+
+    /**
+     * @return void
+     */
+    public function noOutput()
+    {
     }
 }

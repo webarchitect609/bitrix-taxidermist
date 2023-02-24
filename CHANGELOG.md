@@ -1,5 +1,12 @@
 # Change Log
 
+0.1.19
+------
+
+### Добавлено
+
+- `\Bitrix\Main\Data\Cache::$hasOutput`, `\Bitrix\Main\Data\Cache::output()`, `\Bitrix\Main\Data\Cache::noOutput()`
+
 0.1.18
 ------
 
@@ -25,6 +32,7 @@
 - трейт: `\Bitrix\Main\ErrorableImplementation`;
 
 ### Исправлено
+
 - поддержка интерфейсов
 - поддержка трейтов
 

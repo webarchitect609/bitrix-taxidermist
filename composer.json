@@ -20,8 +20,8 @@
     "symfony/finder": "^3.0 || ^4.0 || ^5.0"
   },
   "require-dev": {
-    "friendsofphp/php-cs-fixer": "^2.16",
-    "phpstan/phpstan": "^0.12.25",
+    "friendsofphp/php-cs-fixer": "^3.4.0",
+    "phpstan/phpstan": "^1.10",
     "phpunit/phpunit": "^8.5",
     "roave/security-advisories": "dev-master"
   },
@@ -42,9 +42,9 @@
       "@check:test",
       "@check:security"
     ],
-    "check:analyse": "vendor/bin/phpstan analyse --ansi --no-progress",
-    "check:code-style": "vendor/bin/php-cs-fixer fix --ansi --dry-run --diff --diff-format udiff",
-    "check:security": "@composer update --no-suggest --no-interaction --dry-run roave/security-advisories",
+    "check:analyse": "vendor/bin/phpstan analyse --ansi --no-progress --xdebug",
+    "check:code-style": "vendor/bin/php-cs-fixer fix --ansi --dry-run --diff",
+    "check:security": "@composer update --no-interaction --dry-run roave/security-advisories",
     "check:test": "vendor/bin/phpunit"
   },
   "scripts-descriptions": {

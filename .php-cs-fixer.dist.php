@@ -3,15 +3,15 @@
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 
-return Config::create()
+return (new Config)
              ->setUsingCache(true)
              ->setRiskyAllowed(true)
              ->setRules(
                  [
                      '@PSR2'                                     => true,
-                     'psr0'                                      => true,
+                     'psr_autoloading'                                      => true,
                      'linebreak_after_opening_tag'               => true,
-                     'no_multiline_whitespace_before_semicolons' => true,
+                     'multiline_whitespace_before_semicolons' => true,
                      'no_php4_constructor'                       => true,
                      'no_useless_else'                           => true,
                      'ordered_imports'                           => true,
@@ -25,7 +25,7 @@ return Config::create()
                      'no_unneeded_final_method'                  => true,
                      'no_unneeded_curly_braces'                  => true,
                      'no_superfluous_elseif'                     => true,
-                     'trailing_comma_in_multiline_array'         => true,
+                     'trailing_comma_in_multiline'         => true,
                      'no_unused_imports'                         => true,
                      'include'                                   => true,
                      'array_syntax'                              => [

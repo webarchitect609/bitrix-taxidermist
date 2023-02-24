@@ -67,7 +67,7 @@ class Taxidermist
         }
         try {
             /** @phpstan-ignore-next-line */
-            spl_autoload_register($this->getAutoloadCallable(), true);
+            spl_autoload_register($this->getAutoloadCallable());
             self::$autoloadRegistered = true;
         } catch (Throwable $exception) {
             throw new ErrorRegisteringAutoloaderException(
@@ -88,7 +88,7 @@ class Taxidermist
                 $this->getAutoloadCallableAsString()
             );
         }
-        /** @var array<array> $functions */
+        /** @var array<array<object|string>> $functions */
         $functions = spl_autoload_functions();
         foreach ($functions as $function) {
             if (!is_array($function) || count($function) !== 2) {
@@ -138,7 +138,7 @@ class Taxidermist
     }
 
     /**
-     * @return array<mixed>
+     * @return array<object|string>
      */
     protected function getAutoloadCallable(): array
     {
@@ -154,7 +154,9 @@ class Taxidermist
 
         return sprintf(
             '%s::%s()',
+            /** @phpstan-ignore-next-line */
             get_class($autoloadCallable[0]),
+            /** @phpstan-ignore-next-line */
             $autoloadCallable[1]
         );
     }
