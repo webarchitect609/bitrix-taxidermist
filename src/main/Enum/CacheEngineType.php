@@ -1,17 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpUnused */
 
 namespace WebArch\BitrixTaxidermist\Enum;
 
 class CacheEngineType
 {
-    const NONE = 'cacheenginenone';
+    final public const NONE = 'cacheenginenone';
 
-    const APC = 'cacheengineapc';
+    final public const APC = 'cacheengineapc';
 
-    const XCACHE = 'cacheenginexcache';
+    final public const XCACHE = 'cacheenginexcache';
 
-    const MEMCACHE = 'cacheenginememcache';
+    final public const MEMCACHE = 'cacheenginememcache';
 
-    const FILES = 'cacheenginefiles';
+    final public const FILES = 'cacheenginefiles';
 }

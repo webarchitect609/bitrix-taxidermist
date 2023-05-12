@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpUnusedParameterInspection */
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ORM\Query;
@@ -18,10 +20,8 @@ class Result extends BaseResult
      * data.
      *
      * @param Converter $converter Optional converter to encode data on fetching.
-     *
-     * @return array|false
      */
-    public function fetch(Converter $converter = null)
+    public function fetch(Converter $converter = null): array|false
     {
         return false;
     }

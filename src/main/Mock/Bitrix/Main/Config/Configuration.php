@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpUnusedPrivateMethodInspection */
 
 /** @noinspection PhpUnusedPrivateFieldInspection */
@@ -11,7 +13,7 @@ use Iterator;
 
 /**
  * Class Configuration
- * @package WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Config
+ *
  * @phpstan-ignore-next-line
  */
 final class Configuration implements ArrayAccess, Iterator, Countable
@@ -19,7 +21,7 @@ final class Configuration implements ArrayAccess, Iterator, Countable
     /**
      * @var Configuration[]
      */
-    private static $instances;
+    private static ?array $instances = null;
 
     /**
      * @var string
@@ -34,21 +36,18 @@ final class Configuration implements ArrayAccess, Iterator, Countable
     /**
      * @var array<mixed>
      */
-    private $data = [];
+    private array $data = [];
 
-    /**
-     * @var bool
-     */
-    private $isLoaded = false;
+    private bool $isLoaded = false;
 
-    const CONFIGURATION_FILE_PATH = "/bitrix/.settings.php";
+    public const CONFIGURATION_FILE_PATH = '/bitrix/.settings.php';
 
-    const CONFIGURATION_FILE_PATH_EXTRA = "/bitrix/.settings_extra.php";
+    public const CONFIGURATION_FILE_PATH_EXTRA = '/bitrix/.settings_extra.php';
 
     /**
      * @param string $name
-     *
      * @return null|mixed
+     *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpMissingParamTypeInspection
      */
@@ -59,12 +58,11 @@ final class Configuration implements ArrayAccess, Iterator, Countable
 
     /**
      * @param string $name
-     * @param mixed $value
-     *
      * @return void
+     *
      * @noinspection PhpMissingParamTypeInspection
      */
-    public static function setValue($name, $value)
+    public static function setValue($name, mixed $value)
     {
     }
 
@@ -82,16 +80,15 @@ final class Configuration implements ArrayAccess, Iterator, Countable
     /**
      * @static
      *
-     * @param null|string $moduleId
-     *
      * @return Configuration
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
-    public static function getInstance($moduleId = null)
+    public static function getInstance(?string $moduleId = null)
     {
-        if (!isset(self::$instances[$moduleId])) {
+        if (! isset(self::$instances[$moduleId])) {
             /** @noinspection PhpUnnecessaryStaticReferenceInspection */
-            self::$instances[$moduleId] = new static($moduleId);
+            self::$instances[$moduleId] = new self($moduleId);
         }
 
         return self::$instances[$moduleId];
@@ -99,8 +96,8 @@ final class Configuration implements ArrayAccess, Iterator, Countable
 
     /**
      * @param string $path
-     *
      * @return string
+     *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
@@ -111,14 +108,12 @@ final class Configuration implements ArrayAccess, Iterator, Countable
     }
 
     /**
-     * @param null|string $moduleId
-     *
-     * @return false|string
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
+     *
      * @phpstan-ignore-next-line
      */
-    private static function getPathConfigForModule($moduleId)
+    private static function getPathConfigForModule(?string $moduleId): false|string
     {
         return '';
     }
@@ -139,12 +134,11 @@ final class Configuration implements ArrayAccess, Iterator, Countable
 
     /**
      * @param string $name
-     * @param mixed $value
-     *
      * @return void
+     *
      * @noinspection PhpMissingParamTypeInspection
      */
-    public function add($name, $value)
+    public function add($name, mixed $value)
     {
     }
 
@@ -155,8 +149,8 @@ final class Configuration implements ArrayAccess, Iterator, Countable
      *
      * @param string $name
      * @param array<mixed> $value
-     *
      * @return void
+     *
      * @noinspection PhpMissingParamTypeInspection
      */
     public function addReadonly($name, $value)
@@ -165,8 +159,8 @@ final class Configuration implements ArrayAccess, Iterator, Countable
 
     /**
      * @param string $name
-     *
      * @return void
+     *
      * @noinspection PhpMissingParamTypeInspection
      */
     public function delete($name)
@@ -175,8 +169,8 @@ final class Configuration implements ArrayAccess, Iterator, Countable
 
     /**
      * @param string $name
-     *
      * @return null|mixed
+     *
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
      */
@@ -186,57 +180,55 @@ final class Configuration implements ArrayAccess, Iterator, Countable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      *
-     * @param mixed $name
      *
      * @return bool
+     *
      * @noinspection PhpParameterNameChangedDuringInheritanceInspection
      * @noinspection PhpMissingReturnTypeInspection
      */
-    public function offsetExists($name)
+    public function offsetExists(mixed $name)
     {
         return true;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      *
-     * @param mixed $name
      *
      * @return mixed
+     *
      * @noinspection PhpParameterNameChangedDuringInheritanceInspection
      */
-    public function offsetGet($name)
+    public function offsetGet(mixed $name)
     {
         return null;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      *
-     * @param mixed $name
-     * @param mixed $value
      *
      * @noinspection PhpParameterNameChangedDuringInheritanceInspection
      */
-    public function offsetSet($name, $value)
+    public function offsetSet(mixed $name, mixed $value)
     {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      *
-     * @param mixed $name
      *
      * @noinspection PhpParameterNameChangedDuringInheritanceInspection
      */
-    public function offsetUnset($name)
+    public function offsetUnset(mixed $name)
     {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @return mixed
      */
     public function current()
@@ -245,14 +237,15 @@ final class Configuration implements ArrayAccess, Iterator, Countable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function next()
     {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @return null|bool|float|int|string
      */
     public function key()
@@ -261,7 +254,8 @@ final class Configuration implements ArrayAccess, Iterator, Countable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public function valid()
@@ -270,14 +264,15 @@ final class Configuration implements ArrayAccess, Iterator, Countable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function rewind()
     {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public function count()

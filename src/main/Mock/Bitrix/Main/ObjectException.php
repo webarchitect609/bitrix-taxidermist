@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
 
 /**
@@ -7,7 +9,7 @@ namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
  */
 class ObjectException extends SystemException
 {
-    public function __construct($message = "", \Exception $previous = null)
+    public function __construct($message = '', \Exception $previous = null)
     {
         parent::__construct($message, 500, '', 0, $previous);
     }

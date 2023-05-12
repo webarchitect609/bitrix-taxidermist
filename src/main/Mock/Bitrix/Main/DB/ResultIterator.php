@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\DB;
 
 use Iterator;
@@ -8,15 +10,13 @@ class ResultIterator implements Iterator
 {
     /**
      * ResultIterator constructor.
-     *
-     * @param Result $result
      */
     public function __construct(Result $result)
     {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function current()
     {
@@ -24,21 +24,21 @@ class ResultIterator implements Iterator
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function next()
     {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function key()
     {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function valid()
     {
@@ -46,7 +46,7 @@ class ResultIterator implements Iterator
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function rewind()
     {

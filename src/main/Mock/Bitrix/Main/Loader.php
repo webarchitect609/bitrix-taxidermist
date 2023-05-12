@@ -1,28 +1,36 @@
 <?php
+
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
 
 /**
  * Class Loader loads required files, classes and modules. It is the only class which is included directly.
- * @package Bitrix\Main
  */
 class Loader
 {
     /**
      * Can be used to prevent loading all modules except main and fileman
      */
-    const SAFE_MODE = false;
+    final public const SAFE_MODE = false;
 
-    const BITRIX_HOLDER = "bitrix";
-    const LOCAL_HOLDER = "local";
+    final public const BITRIX_HOLDER = 'bitrix';
 
-    protected static $safeModeModules = ["main" => true, "fileman" => true];
-    protected static $loadedModules = ["main" => true];
+    final public const LOCAL_HOLDER = 'local';
+
+    protected static $safeModeModules = ['main' => true, 'fileman' => true];
+
+    protected static $loadedModules = ['main' => true];
+
     protected static $semiloadedModules = [];
-    protected static $modulesHolders = ["main" => self::BITRIX_HOLDER];
+
+    protected static $modulesHolders = ['main' => self::BITRIX_HOLDER];
+
     protected static $sharewareModules = [];
 
     /**
      * Custom autoload paths.
+     *
      * @var array [namespace => [ [path1, depth1], [path2, depth2] ]
      */
     protected static $namespaces = [];
@@ -30,19 +38,22 @@ class Loader
     /**
      * Returned by includeSharewareModule() if module is not found
      */
-    const MODULE_NOT_FOUND = 0;
+    final public const MODULE_NOT_FOUND = 0;
+
     /**
      * Returned by includeSharewareModule() if module is installed
      */
-    const MODULE_INSTALLED = 1;
+    final public const MODULE_INSTALLED = 1;
+
     /**
      * Returned by includeSharewareModule() if module works in demo mode
      */
-    const MODULE_DEMO = 2;
+    final public const MODULE_DEMO = 2;
+
     /**
      * Returned by includeSharewareModule() if the trial period is expired
      */
-    const MODULE_DEMO_EXPIRED = 3;
+    final public const MODULE_DEMO_EXPIRED = 3;
 
     protected static $autoLoadClasses = [];
 
@@ -52,16 +63,18 @@ class Loader
     protected static $requireThrowException = true;
 
     /** @deprecated   */
-    const ALPHA_LOWER = "qwertyuioplkjhgfdsazxcvbnm";
+    final public const ALPHA_LOWER = 'qwertyuioplkjhgfdsazxcvbnm';
+
     /** @deprecated   */
-    const ALPHA_UPPER = "QWERTYUIOPLKJHGFDSAZXCVBNM";
+    final public const ALPHA_UPPER = 'QWERTYUIOPLKJHGFDSAZXCVBNM';
 
     /**
      * Includes a module by its name.
      *
      * @param string $moduleName Name of the included module
-     * @throws LoaderException
      * @return bool Returns true if module was included successfully, otherwise returns false
+     *
+     * @throws LoaderException
      */
     public static function includeModule($moduleName)
     {
@@ -71,10 +84,10 @@ class Loader
     /**
      * Includes module by its name, throws an exception in case of failure
      *
-     * @param $moduleName
+     *
+     * @return bool
      *
      * @throws LoaderException
-     * @return bool
      */
     public static function requireModule($moduleName)
     {
@@ -83,7 +96,7 @@ class Loader
 
     private static function includeModuleInternal($path)
     {
-        return;
+
     }
 
     /**
@@ -102,7 +115,7 @@ class Loader
 
     public static function clearModuleCache($moduleName)
     {
-        return;
+
     }
 
     /**
@@ -114,8 +127,9 @@ class Loader
     {
         static $documentRoot = null;
         if ($documentRoot === null) {
-            $documentRoot = rtrim($_SERVER["DOCUMENT_ROOT"], "/\\");
+            $documentRoot = rtrim((string) $_SERVER['DOCUMENT_ROOT'], '/\\');
         }
+
         return $documentRoot;
     }
 
@@ -126,6 +140,7 @@ class Loader
      *
      * @param string $moduleName Name of the module. Can be null if classes are not part of any module
      * @param array $classes Array of classes with class names as keys and paths as values.
+     *
      * @throws LoaderException
      */
     public static function registerAutoLoadClasses($moduleName, array $classes)
@@ -138,12 +153,12 @@ class Loader
         }
 
         foreach ($classes as $class => $file) {
-            $class = ltrim($class, "\\");
+            $class = ltrim($class, '\\');
             $class = strtolower($class);
 
             self::$autoLoadClasses[$class] = [
-                "module" => $moduleName,
-                "file" => $file,
+                'module' => $moduleName,
+                'file'   => $file,
             ];
         }
     }
@@ -157,25 +172,26 @@ class Loader
      */
     public static function registerNamespace($namespace, $path)
     {
-        $namespace = trim($namespace, "\\")."\\";
+        $namespace = trim($namespace, '\\').'\\';
         $namespace = strtolower($namespace);
 
-        $path = rtrim($path, "/\\");
-        $depth = substr_count(rtrim($namespace, "\\"), "\\");
+        $path  = rtrim($path, '/\\');
+        $depth = substr_count(rtrim($namespace, '\\'), '\\');
 
         self::$namespaces[$namespace][] = [
-            "path" => $path,
-            "depth" => $depth,
+            'path'  => $path,
+            'depth' => $depth,
         ];
     }
 
     /**
      * Unregisters a namespace.
+     *
      * @param string $namespace
      */
     public static function unregisterNamespace($namespace)
     {
-        $namespace = trim($namespace, "\\")."\\";
+        $namespace = trim($namespace, '\\').'\\';
         $namespace = strtolower($namespace);
 
         unset(self::$namespaces[$namespace]);
@@ -183,7 +199,6 @@ class Loader
 
     /**
      * Registers an additional autoload handler.
-     * @param callable $handler
      */
     public static function registerHandler(callable $handler)
     {
@@ -193,13 +208,11 @@ class Loader
     /**
      * PSR-4 compatible autoloader.
      * https://www.php-fig.org/psr/psr-4/
-     *
-     * @param $className
      */
     public static function autoLoad($className)
     {
         // fix web env
-        $className = ltrim($className, "\\");
+        $className = ltrim((string) $className, '\\');
 
         $classLower = strtolower($className);
 
@@ -211,68 +224,69 @@ class Loader
         //optimization via direct paths
         if (isset(self::$autoLoadClasses[$classLower])) {
             $pathInfo = self::$autoLoadClasses[$classLower];
-            if ($pathInfo["module"] != "") {
-                $module = $pathInfo["module"];
-                $holder = (isset(self::$modulesHolders[$module])? self::$modulesHolders[$module] : self::BITRIX_HOLDER);
+            if ($pathInfo['module'] != '') {
+                $module = $pathInfo['module'];
+                $holder = (self::$modulesHolders[$module] ?? self::BITRIX_HOLDER);
 
                 $filePath = (defined('REPOSITORY_ROOT'))
                     ? REPOSITORY_ROOT
                     : "{$documentRoot}/{$holder}/modules";
 
-                $filePath .= '/'.$module."/".$pathInfo["file"];
+                $filePath .= '/'.$module.'/'.$pathInfo['file'];
 
                 require_once $filePath;
             } else {
-                require_once $documentRoot.$pathInfo["file"];
+                require_once $documentRoot.$pathInfo['file'];
             }
+
             return;
         }
 
-        if (preg_match("#[^\\\\/a-zA-Z0-9_]#", $className)) {
+        if (preg_match('#[^\\\\/a-zA-Z0-9_]#', $className)) {
             return;
         }
 
         $tryFiles = [[
-            "real" => $className,
-            "lower" => $classLower,
+            'real'  => $className,
+            'lower' => $classLower,
         ]];
 
-        if (substr($classLower, -5) == "table") {
+        if (str_ends_with($classLower, 'table')) {
             // old *Table stored in reserved files
             $tryFiles[] = [
-                "real" => substr($className, 0, -5),
-                "lower" => substr($classLower, 0, -5),
+                'real'  => substr($className, 0, -5),
+                'lower' => substr($classLower, 0, -5),
             ];
         }
 
         foreach ($tryFiles as $classInfo) {
-            $classParts = explode("\\", $classInfo["lower"]);
+            $classParts = explode('\\', $classInfo['lower']);
 
             //remove class name
             array_pop($classParts);
 
-            while (!empty($classParts)) {
+            while (! empty($classParts)) {
                 //go from the end
-                $namespace = implode("\\", $classParts)."\\";
+                $namespace = implode('\\', $classParts).'\\';
 
                 if (isset(self::$namespaces[$namespace])) {
                     //found
                     foreach (self::$namespaces[$namespace] as $namespaceLocation) {
-                        $depth = $namespaceLocation["depth"];
-                        $path = $namespaceLocation["path"];
+                        $depth = $namespaceLocation['depth'];
+                        $path  = $namespaceLocation['path'];
 
-                        $fileParts = explode("\\", $classInfo["real"]);
+                        $fileParts = explode('\\', $classInfo['real']);
 
-                        for ($i=0; $i <= $depth; $i++) {
+                        for ($i = 0; $i <= $depth; $i++) {
                             array_shift($fileParts);
                         }
 
-                        $classPath = implode("/", $fileParts);
+                        $classPath = implode('/', $fileParts);
 
                         $classPathLower = strtolower($classPath);
 
                         // final path lower case
-                        $filePath = $path.'/'.$classPathLower.".php";
+                        $filePath = $path.'/'.$classPathLower.'.php';
 
                         if (file_exists($filePath)) {
                             require_once $filePath;
@@ -280,7 +294,7 @@ class Loader
                         }
 
                         // final path original case
-                        $filePath = $path.'/'.$classPath.".php";
+                        $filePath = $path.'/'.$classPath.'.php';
 
                         if (file_exists($filePath)) {
                             require_once $filePath;
@@ -296,31 +310,29 @@ class Loader
     }
 
     /**
-     * @param $className
-     *
      * @throws LoaderException
      */
     public static function requireClass($className)
     {
-        $file = ltrim($className, "\\");    // fix web env
+        $file = ltrim((string) $className, '\\');    // fix web env
         $file = strtolower($file);
 
-        if (preg_match("#[^\\\\/a-zA-Z0-9_]#", $file)) {
+        if (preg_match('#[^\\\\/a-zA-Z0-9_]#', $file)) {
             return;
         }
 
         $tryFiles = [$file];
 
-        if (substr($file, -5) == "table") {
+        if (str_ends_with($file, 'table')) {
             // old *Table stored in reserved files
             $tryFiles[] = substr($file, 0, -5);
         }
 
         foreach ($tryFiles as $file) {
-            $file = str_replace('\\', '/', $file);
-            $arFile = explode("/", $file);
+            $file   = str_replace('\\', '/', $file);
+            $arFile = explode('/', $file);
 
-            if ($arFile[0] === "bitrix") {
+            if ($arFile[0] === 'bitrix') {
                 array_shift($arFile);
 
                 if (empty($arFile)) {
@@ -339,12 +351,12 @@ class Loader
                     break;
                 }
 
-                $module = $module1.".".$module2;
+                $module = $module1.'.'.$module2;
             }
 
-            if (!self::includeModule($module)) {
+            if (! self::includeModule($module)) {
                 throw new LoaderException(sprintf(
-                    "There is no `%s` class, module `%s` is unavailable",
+                    'There is no `%s` class, module `%s` is unavailable',
                     $className,
                     $module
                 ));
@@ -361,20 +373,19 @@ class Loader
      * @param null|string $root Server document root, default self::getDocumentRoot()
      * @return bool|string Returns combined path or false if the file does not exist in both dirs
      */
-    public static function getLocal($path, $root = null)
+    public static function getLocal($path, ?string $root = null): bool|string
     {
         if ($root === null) {
             $root = self::getDocumentRoot();
         }
 
-        if (file_exists($root."/local/".$path)) {
-            return $root."/local/".$path;
+        if (file_exists($root.'/local/'.$path)) {
+            return $root.'/local/'.$path;
         }
-        if (file_exists($root."/bitrix/".$path)) {
-            return $root."/bitrix/".$path;
+        if (file_exists($root.'/bitrix/'.$path)) {
+            return $root.'/bitrix/'.$path;
         }
-        
-        
+
         return false;
     }
 
@@ -385,13 +396,13 @@ class Loader
      * @param string $path File path relative to personal directory
      * @return bool|string Returns combined path or false if the file does not exist
      */
-    public static function getPersonal($path)
+    public static function getPersonal($path): bool|string
     {
-        $root = self::getDocumentRoot();
-        $personal = (isset($_SERVER["BX_PERSONAL_ROOT"])? $_SERVER["BX_PERSONAL_ROOT"] : "");
+        $root     = self::getDocumentRoot();
+        $personal = ($_SERVER['BX_PERSONAL_ROOT'] ?? '');
 
-        if ($personal <> '' && file_exists($root.$personal."/".$path)) {
-            return $root.$personal."/".$path;
+        if ($personal != '' && file_exists($root.$personal.'/'.$path)) {
+            return $root.$personal.'/'.$path;
         }
 
         return self::getLocal($path, $root);

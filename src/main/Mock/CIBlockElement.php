@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace WebArch\BitrixTaxidermist\Mock;
@@ -10,20 +11,20 @@ class CIBlockElement
     ///////////////////////////////////////////////////////////////////
     public static function WF_GetLockStatus($ID, &$locked_by, &$date_lock)
     {
-        return "";
+        return '';
     }
 
     ///////////////////////////////////////////////////////////////////
     // Locking element
     ///////////////////////////////////////////////////////////////////
-    public static function WF_Lock($LAST_ID, $bWorkFlow=true)
+    public static function WF_Lock($LAST_ID, $bWorkFlow = true)
     {
     }
 
     ///////////////////////////////////////////////////////////////////
     // Unlock element
     ///////////////////////////////////////////////////////////////////
-    public static function WF_UnLock($LAST_ID, $bWorkFlow=true)
+    public static function WF_UnLock($LAST_ID, $bWorkFlow = true)
     {
     }
 
@@ -35,7 +36,7 @@ class CIBlockElement
         return new CDBResult();
     }
 
-    public function prepareSql($arSelectFields=[], $arFilter=[], $arGroupBy=false, $arOrder=["SORT"=>"ASC"])
+    public function prepareSql($arSelectFields = [], $arFilter = [], $arGroupBy = false, $arOrder = ['SORT' => 'ASC'])
     {
     }
 
@@ -44,12 +45,9 @@ class CIBlockElement
      *
      * @param array $arOrder
      * @param array $arFilter
-     * @param array|bool $arGroupBy
-     * @param array|bool $arNavStartParams
      * @param array $arSelectFields
-     * @return CIBlockResult|integer
      */
-    public static function GetList($arOrder=["SORT"=>"ASC"], $arFilter=[], $arGroupBy=false, $arNavStartParams=false, $arSelectFields=[])
+    public static function GetList($arOrder = ['SORT' => 'ASC'], $arFilter = [], array|bool $arGroupBy = false, array|bool $arNavStartParams = false, $arSelectFields = []): CIBlockResult|int
     {
         return new CIBlockResult();
     }
@@ -57,7 +55,7 @@ class CIBlockElement
     ///////////////////////////////////////////////////////////////////
     // Update element function
     ///////////////////////////////////////////////////////////////////
-    public function Update($ID, $arFields, $bWorkFlow=false, $bUpdateSearch=true, $bResizePictures=false, $bCheckDiskQuota=true)
+    public function Update($ID, $arFields, $bWorkFlow = false, $bUpdateSearch = true, $bResizePictures = false, $bCheckDiskQuota = true)
     {
         return true;
     }
@@ -68,12 +66,12 @@ class CIBlockElement
 
     public static function GetRandFunction()
     {
-        return " RAND(".mt_rand(0, 1000000).") ";
+        return ' RAND('.random_int(0, 1000000).') ';
     }
 
     public static function GetShowedFunction()
     {
-        return " IfNULL(BE.SHOW_COUNTER/((UNIX_TIMESTAMP(now())-UNIX_TIMESTAMP(BE.SHOW_COUNTER_START)+0.1)/60/60),0) ";
+        return ' IfNULL(BE.SHOW_COUNTER/((UNIX_TIMESTAMP(now())-UNIX_TIMESTAMP(BE.SHOW_COUNTER_START)+0.1)/60/60),0) ';
     }
 
     ///////////////////////////////////////////////////////////////////
@@ -84,12 +82,8 @@ class CIBlockElement
         return true;
     }
 
-    /**
-     * @param mixed $order
-     * @return string
-     */
-    protected function getIdOrder($order): string
+    protected function getIdOrder(mixed $order): string
     {
-        return "";
+        return '';
     }
 }

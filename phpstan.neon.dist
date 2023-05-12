@@ -1,3 +1,7 @@
+includes:
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-phpunit/rules.neon
+
 parameters:
     level: max # from 0 to 8, or 'max' as an alias for the highest level
     paths:

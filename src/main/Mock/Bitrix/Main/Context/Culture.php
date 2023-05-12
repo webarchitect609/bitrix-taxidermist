@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpDocRedundantThrowsInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
 /** @noinspection PhpUnusedParameterInspection */
@@ -22,17 +24,16 @@ class Culture
 
     /**
      * @param int $cultureId
-     *
-     * @return null|Culture
      */
-    public static function wakeUp($cultureId)
+    public static function wakeUp($cultureId): ?Culture
     {
         return new static;
     }
 
     /**
-     * @throws Main\ObjectPropertyException
      * @return string
+     *
+     * @throws Main\ObjectPropertyException
      */
     public function getDateTimeFormat()
     {
@@ -40,8 +41,9 @@ class Culture
     }
 
     /**
-     * @throws Main\ObjectPropertyException
      * @return string
+     *
+     * @throws Main\ObjectPropertyException
      */
     public function getDateFormat()
     {
@@ -49,8 +51,9 @@ class Culture
     }
 
     /**
-     * @throws Main\ObjectPropertyException
      * @return string
+     *
+     * @throws Main\ObjectPropertyException
      */
     public function getCharset()
     {
@@ -58,8 +61,9 @@ class Culture
     }
 
     /**
-     * @throws Main\ObjectPropertyException
      * @return string
+     *
+     * @throws Main\ObjectPropertyException
      */
     public function getNameFormat()
     {

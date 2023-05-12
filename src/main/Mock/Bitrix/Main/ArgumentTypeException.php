@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
 
 use Exception;
@@ -16,13 +18,12 @@ class ArgumentTypeException extends ArgumentException
      *
      * @param string $parameter Argument that generates exception
      * @param string $requiredType Required type
-     * @param null|Exception $previous
      *
      * @noinspection PhpMissingParamTypeInspection
      */
-    public function __construct($parameter, $requiredType = "", Exception $previous = null)
+    public function __construct($parameter, $requiredType = '', Exception $previous = null)
     {
-        if (!empty($requiredType)) {
+        if (! empty($requiredType)) {
             $message = sprintf("The value of an argument '%s' must be of type %s", $parameter, $requiredType);
         } else {
             $message = sprintf("The value of an argument '%s' has an invalid type", $parameter);
@@ -35,6 +36,7 @@ class ArgumentTypeException extends ArgumentException
 
     /**
      * @return string
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public function getRequiredType()

@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ORM\Data;
 
 class Result extends \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Result
 {
-    /** @var bool  */
+    /** @var bool */
     protected $wereErrorsChecked = false;
 
     /** @var EntityObject */
@@ -37,12 +38,11 @@ class Result extends \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Result
      * Within the core and events should be called with internalCall flag
      *
      * @param bool $internalCall
-     *
      * @return bool
      */
     public function isSuccess($internalCall = false)
     {
-        if (!$internalCall && !$this->wereErrorsChecked) {
+        if (! $internalCall && ! $this->wereErrorsChecked) {
             $this->wereErrorsChecked = true;
         }
 
@@ -75,10 +75,10 @@ class Result extends \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Result
 
     public function __destruct()
     {
-        if (!$this->isSuccess && !$this->wereErrorsChecked) {
+        if (! $this->isSuccess && ! $this->wereErrorsChecked) {
             // nobody interested in my errors :(
             // make a warning (usually it should be written in log)
-            trigger_error(join('; ', $this->getErrorMessages()), E_USER_WARNING);
+            trigger_error(implode('; ', $this->getErrorMessages()), E_USER_WARNING);
         }
     }
 }

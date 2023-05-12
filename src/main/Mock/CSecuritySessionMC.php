@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpComposerExtensionStubsInspection */
 
 namespace WebArch\BitrixTaxidermist\Mock;
@@ -27,6 +29,7 @@ class CSecuritySessionMC
 
     /**
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public static function Init()
@@ -37,8 +40,8 @@ class CSecuritySessionMC
     /**
      * @param string $savePath - unused on this handler
      * @param string $sessionName - unused on this handler
-     *
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -50,6 +53,7 @@ class CSecuritySessionMC
 
     /**
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public static function close()
@@ -59,8 +63,8 @@ class CSecuritySessionMC
 
     /**
      * @param string $id - session id, must be valid hash
-     *
      * @return string
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -73,8 +77,8 @@ class CSecuritySessionMC
     /**
      * @param string $id - session id, must be valid hash
      * @param string $sessionData
-     *
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -86,8 +90,8 @@ class CSecuritySessionMC
 
     /**
      * @param string $id - session id, must be valid hash
-     *
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -99,8 +103,8 @@ class CSecuritySessionMC
 
     /**
      * @param int $maxLifeTime - unused on this handler
-     *
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -112,6 +116,7 @@ class CSecuritySessionMC
 
     /**
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public static function isStorageEnabled()
@@ -121,6 +126,7 @@ class CSecuritySessionMC
 
     /**
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     protected static function isConnected()
@@ -130,8 +136,8 @@ class CSecuritySessionMC
 
     /**
      * @param string $pId
-     *
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -143,6 +149,7 @@ class CSecuritySessionMC
 
     /**
      * @return string
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     protected static function getPrefix()
@@ -152,6 +159,7 @@ class CSecuritySessionMC
 
     /**
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     protected static function newConnection()

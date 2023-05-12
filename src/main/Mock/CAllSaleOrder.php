@@ -1,23 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace WebArch\BitrixTaxidermist\Mock;
 
 class CAllSaleOrder
 {
-    /**
-     * @param $siteId
-     * @param $userId
-     * @param $arShoppingCart
-     * @param $personTypeId
-     * @param $arOrderPropsValues
-     * @param $deliveryId
-     * @param $paySystemId
-     * @param $arOptions
-     * @param $arErrors
-     * @param $arWarnings
-     * @return null|array
-     */
     public static function DoCalculateOrder(
         $siteId,
         $userId,
@@ -28,30 +16,26 @@ class CAllSaleOrder
         $paySystemId,
         $arOptions,
         &$arErrors,
-        &$arWarnings
-    ) {
+        &$arWarnings,
+    ): ?array {
         return [];
     }
 
     /**
-     * @param $siteId
      * @param null $userId
-     * @param $shoppingCart
-     * @param array $options
-     *
      * @return array
      */
-    public static function makeOrderArray($siteId, $userId = null, array $shoppingCart, array $options = [])
+    public static function makeOrderArray($siteId, array $shoppingCart, $userId = null, array $options = [])
     {
         return [];
     }
 
     /**
      * calculate the cost according to the order basket
+     *
      * @param array $arBasketItems
-     * @return array|bool
      */
-    public static function CalculateOrderPrices($arBasketItems)
+    public static function CalculateOrderPrices($arBasketItems): array|bool
     {
         return [];
     }
@@ -62,10 +46,6 @@ class CAllSaleOrder
     {
     }
 
-    /**
-     *
-     *
-     */
     public static function DoSaveOrder(&$arOrder, $arAdditionalFields, $orderId, &$arErrors, $arCoupons = [], $arStoreBarcodeOrderFormData = [], $bSaveBarcodes = false)
     {
         return 0;
@@ -74,44 +54,40 @@ class CAllSaleOrder
     //*************** USER PERMISSIONS *********************/
     /**
      * @param int $ID
-     * @param array|bool $arUserGroups
      * @param int $userID
      * @return bool
      */
-    public static function CanUserViewOrder($ID, $arUserGroups = false, $userID = 0)
+    public static function CanUserViewOrder($ID, array|bool $arUserGroups = false, $userID = 0)
     {
         return true;
     }
 
     /**
      * @param int $ID
-     * @param array|bool $arUserGroups
      * @param bool $siteID
      * @return bool
      */
-    public static function CanUserUpdateOrder($ID, $arUserGroups = false, $siteID = false)
+    public static function CanUserUpdateOrder($ID, array|bool $arUserGroups = false, $siteID = false)
     {
         return false;
     }
 
     /**
      * @param int $ID
-     * @param array|bool $arUserGroups
      * @param int $userID
      * @return bool
      */
-    public static function CanUserCancelOrder($ID, $arUserGroups = false, $userID = 0)
+    public static function CanUserCancelOrder($ID, array|bool $arUserGroups = false, $userID = 0)
     {
         return true;
     }
 
     /**
      * @param int $ID
-     * @param array|bool $arUserGroups
      * @param int $userID
      * @return bool
      */
-    public static function CanUserMarkOrder($ID, $arUserGroups = false, $userID = 0)
+    public static function CanUserMarkOrder($ID, array|bool $arUserGroups = false, $userID = 0)
     {
         return true;
     }
@@ -119,10 +95,9 @@ class CAllSaleOrder
     /**
      * @param int $ID
      * @param string $flag
-     * @param array|bool $arUserGroups
      * @return bool
      */
-    public static function CanUserChangeOrderFlag($ID, $flag, $arUserGroups = false)
+    public static function CanUserChangeOrderFlag($ID, $flag, array|bool $arUserGroups = false)
     {
         return true;
     }
@@ -130,21 +105,19 @@ class CAllSaleOrder
     /**
      * @param int $ID
      * @param string $statusID
-     * @param array|bool $arUserGroups
      * @return bool
      */
-    public static function CanUserChangeOrderStatus($ID, $statusID, $arUserGroups = false)
+    public static function CanUserChangeOrderStatus($ID, $statusID, array|bool $arUserGroups = false)
     {
         return true;
     }
 
     /**
      * @param int $ID
-     * @param array|bool $arUserGroups
      * @param int $userID
      * @return bool
      */
-    public static function CanUserDeleteOrder($ID, $arUserGroups = false, $userID = 0)
+    public static function CanUserDeleteOrder($ID, array|bool $arUserGroups = false, $userID = 0)
     {
         return true;
     }
@@ -174,21 +147,19 @@ class CAllSaleOrder
     public static function PrepareSql(&$arFields, $arOrder, &$arFilter, $arGroupBy, $arSelectFields, $obUserFieldsSql = false, $callback = false, $arOptions = [])
     {
         return [
-            "SELECT" => "",
-            "FROM" => "",
-            "WHERE" => "",
-            "GROUPBY" => "",
-            "ORDERBY" => "",
+            'SELECT'  => '',
+            'FROM'    => '',
+            'WHERE'   => '',
+            'GROUPBY' => '',
+            'ORDERBY' => '',
         ];
     }
-
 
     //*************** SELECT *********************/
     public static function GetByID($ID)
     {
         return true;
     }
-
 
     //*************** EVENTS *********************/
     public static function OnBeforeCurrencyDelete($currency)
@@ -212,7 +183,7 @@ class CAllSaleOrder
         return true;
     }
 
-    public static function DeductOrder($ID, $val, $description = "", $bAutoDeduction = true, $arStoreBarcodeOrderFormData = [], $recurringID = 0)
+    public static function DeductOrder($ID, $val, $description = '', $bAutoDeduction = true, $arStoreBarcodeOrderFormData = [], $recurringID = 0)
     {
         return true;
     }
@@ -222,7 +193,7 @@ class CAllSaleOrder
         return true;
     }
 
-    public static function CancelOrder($ID, $val, $description = "")
+    public static function CancelOrder($ID, $val, $description = '')
     {
         return true;
     }
@@ -254,7 +225,7 @@ class CAllSaleOrder
 
     public static function RemindPayment()
     {
-        return "CSaleOrder::RemindPayment();";
+        return 'CSaleOrder::RemindPayment();';
     }
 
     /**
@@ -271,7 +242,7 @@ class CAllSaleOrder
      */
     public static function GetNextAccountNumber($orderID, $templateType, $param)
     {
-        return "";
+        return '';
     }
 
     public static function __SaleOrderCount($arFilter, $strCurrency = '')
@@ -290,12 +261,12 @@ class CAllSaleOrder
      * @param array $arSelectFields - array to selectes fields
      * @return object $dbRes - object result
      */
-    public static function GetHistoryList($arOrder = ["ID"=>"DESC"], $arFilter = [], $arGroupBy = false, $arNavStartParams = false, $arSelectFields = [])
+    public static function GetHistoryList($arOrder = ['ID' => 'DESC'], $arFilter = [], array|false $arGroupBy = false, array|false $arNavStartParams = false, $arSelectFields = [])
     {
         return new CDBResult();
     }
 
-    public static function SetMark($ID, $comment = "", $userID = 0)
+    public static function SetMark($ID, $comment = '', $userID = 0)
     {
         return true;
     }
@@ -318,7 +289,6 @@ class CAllSaleOrder
         return true;
     }
 
-
     /**
      * The agent function. Moves reserved quantity back to the quantity field for each product
      * for orders which were placed earlier than specific date
@@ -327,7 +297,7 @@ class CAllSaleOrder
      */
     public static function ClearProductReservedQuantity()
     {
-        return "CSaleOrder::ClearProductReservedQuantity();";
+        return 'CSaleOrder::ClearProductReservedQuantity();';
     }
 
     /**
@@ -340,11 +310,10 @@ class CAllSaleOrder
      * @param mixed[] $field - field array of the key
      * @param mixed[] $fields - array of all fields
      * @param mixed[] $filter - filter array of the key
-     * @return false|string
      */
-    protected static function ProcessCompleteOrdersParam($values, $key, $op, $opNegative, $field, $fields, $filter)
+    protected static function ProcessCompleteOrdersParam(array|string $values, $key, $op, $opNegative, $field, $fields, $filter): false|string
     {
-        return "";
+        return '';
     }
 
     // returns reference of all properties of TYPE = LOCATION
@@ -355,6 +324,7 @@ class CAllSaleOrder
 
     /**
      * @internal
+     *
      * @return array
      */
     public static function getRoundFields()
@@ -369,11 +339,9 @@ class CAllSaleOrder
 
     /**
      * @internal
-     * @param array $list
-     * @param $perm
+     *
      * @param bool $userGroups
      * @param bool $userId
-     *
      * @return array
      */
     public static function checkUserPermissionOrderList(array $list, $perm, $userGroups = false, $userId = false)

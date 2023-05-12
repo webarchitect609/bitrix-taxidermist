@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpDocRedundantThrowsInspection */
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ORM\Fields;
@@ -9,7 +11,6 @@ class StringField extends ScalarField
 {
     /**
      * @param mixed $value
-     *
      * @return string
      */
     public function cast($value)
@@ -19,9 +20,9 @@ class StringField extends ScalarField
 
     /**
      * @param mixed $value
+     * @return string
      *
      * @throws SystemException
-     * @return string
      */
     public function convertValueFromDb($value)
     {
@@ -30,9 +31,9 @@ class StringField extends ScalarField
 
     /**
      * @param string $value
+     * @return string
      *
      * @throws SystemException
-     * @return string
      */
     public function convertValueToDb($value)
     {

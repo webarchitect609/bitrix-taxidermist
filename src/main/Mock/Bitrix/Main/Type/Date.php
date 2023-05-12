@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Type;
 
 use DateInterval;
 use WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
 use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Context;
 
-class Date
+class Date implements \Stringable
 {
     /** @var \DateTime */
     protected $value;
@@ -25,7 +27,6 @@ class Date
      * Formats date value to string.
      *
      * @param string $format PHP date format.
-     *
      * @return string
      */
     public function format($format)
@@ -60,7 +61,6 @@ class Date
      * Examples: "+5 weeks", "12 day", "-7 weekdays", '3 months - 5 days'
      *
      * @param string $interval Time interval to add.
-     *
      * @return $this
      */
     public function add($interval)
@@ -70,10 +70,10 @@ class Date
 
     /**
      * Sets the current date of the DateTime object to a different date.
+     *
      * @param int $year
      * @param int $month
      * @param int $day
-     *
      * @return $this
      */
     public function setDate($year, $month, $day)
@@ -81,12 +81,7 @@ class Date
         return $this;
     }
 
-    /**
-     * @param $interval
-     *
-     * @return null|DateInterval
-     */
-    private function tryToCreateIntervalByDesignators($interval)
+    private function tryToCreateIntervalByDesignators($interval): ?DateInterval
     {
         return null;
     }
@@ -105,7 +100,6 @@ class Date
      * Converts a date to the string.
      *
      * @param Context\Culture $culture Culture contains date format.
-     *
      * @return string
      */
     public function toString(Context\Culture $culture = null)
@@ -115,10 +109,8 @@ class Date
 
     /**
      * Converts a date to the string with default culture format setting.
-     *
-     * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return '';
     }
@@ -127,7 +119,6 @@ class Date
      * Returns a date format from the culture in the php format.
      *
      * @param Context\Culture $culture Optional culture.
-     *
      * @return string
      */
     public static function getFormat(Context\Culture $culture = null)
@@ -139,7 +130,6 @@ class Date
      * Returns short date culture format.
      *
      * @param Context\Culture $culture Culture.
-     *
      * @return string
      */
     protected static function getCultureFormat(Context\Culture $culture)
@@ -151,7 +141,6 @@ class Date
      * Converts date format from culture to php format.
      *
      * @param string $format Format string.
-     *
      * @return mixed
      */
     public static function convertFormatToPhp($format)
@@ -164,7 +153,6 @@ class Date
      *
      * @param string $time String representation of date.
      * @param string $format PHP date format. If not specified, the format is got from the current culture.
-     *
      * @return bool
      */
     public static function isCorrect($time, $format = null)
@@ -176,7 +164,6 @@ class Date
      * Creates Date object from PHP \DateTime object.
      *
      * @param \DateTime $datetime Source object.
-     *
      * @return static
      */
     public static function createFromPhp(\DateTime $datetime)
@@ -188,7 +175,6 @@ class Date
      * Creates Date object from Unix timestamp.
      *
      * @param int $timestamp Source timestamp.
-     *
      * @return static
      */
     public static function createFromTimestamp($timestamp)
@@ -201,9 +187,8 @@ class Date
      * Examples: "end of next week", "tomorrow morning", "friday 25.10"
      *
      * @param string $text
-     * @return null|DateTime
      */
-    public static function createFromText($text)
+    public static function createFromText($text): ?DateTime
     {
         return null;
     }

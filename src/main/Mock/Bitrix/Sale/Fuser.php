@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Sale;
@@ -9,13 +10,11 @@ class Fuser
      * Return fuserId.
      *
      * @param bool $skipCreate		Create, if not exist.
-     * @return null|int
      */
-    public static function getId($skipCreate = false)
+    public static function getId($skipCreate = false): ?int
     {
         return 0;
     }
-
 
     /**
      * Return user by fuserId.

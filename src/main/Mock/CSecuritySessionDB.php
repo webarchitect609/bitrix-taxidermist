@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Mock;
 
 class CSecuritySessionDB
@@ -16,6 +18,7 @@ class CSecuritySessionDB
 
     /**
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public static function Init()
@@ -26,8 +29,8 @@ class CSecuritySessionDB
     /**
      * @param string $savePath - unused on this handler
      * @param string $sessionName - unused on this handler
-     *
      * @return bool
+     *
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -39,6 +42,7 @@ class CSecuritySessionDB
 
     /**
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public static function close()
@@ -48,8 +52,8 @@ class CSecuritySessionDB
 
     /**
      * @param string $id - session id, must be valid hash
-     *
      * @return string
+     *
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -62,8 +66,8 @@ class CSecuritySessionDB
     /**
      * @param string $id - session id, must be valid hash
      * @param string $sessionData
-     *
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -75,8 +79,8 @@ class CSecuritySessionDB
 
     /**
      * @param string $id - session id, must be valid hash
-     *
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -88,8 +92,8 @@ class CSecuritySessionDB
 
     /**
      * @param int $maxLifeTime
-     *
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -101,8 +105,8 @@ class CSecuritySessionDB
 
     /**
      * @param string $pId
-     *
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection

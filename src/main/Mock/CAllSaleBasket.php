@@ -1,14 +1,17 @@
 <?php
+
 declare(strict_types=1);
 
 namespace WebArch\BitrixTaxidermist\Mock;
 
 class CAllSaleBasket
 {
-    const TYPE_SET = 1;
+    final public const TYPE_SET = 1;
 
     protected static $currencySiteList = [];
+
     protected static $currencyList = [];
+
     /**
      * Checks if the basket item has product provider class implementing IBXSaleProductProvider interface
      *
@@ -34,7 +37,7 @@ class CAllSaleBasket
     /**
      * Sends product subscription letter
      *
-     * @param integer $ID - code product
+     * @param int $ID - code product
      * @param string $MODULE - module product
      * @return bool
      */
@@ -106,7 +109,6 @@ class CAllSaleBasket
         return true;
     }
 
-
     //************** BASKET USER ********************//
     public static function Init($bVar = false, $bSkipFUserInit = false)
     {
@@ -117,7 +119,6 @@ class CAllSaleBasket
         return 0;
     }
 
-
     //************** SELECT ********************//
     public static function GetByID($ID)
     {
@@ -125,17 +126,17 @@ class CAllSaleBasket
     }
 
     //************** CALLBACK FUNCTIONS ********************//
-    public static function ExecuteCallbackFunction($callbackFunc = "", $module = "", $productID = 0)
+    public static function ExecuteCallbackFunction($callbackFunc = '', $module = '', $productID = 0)
     {
         return [];
     }
 
-    public static function ReReadPrice($callbackFunc = "", $module = "", $productID = 0, $quantity = 0, $renewal = "N", $productProvider = "")
+    public static function ReReadPrice($callbackFunc = '', $module = '', $productID = 0, $quantity = 0, $renewal = 'N', $productProvider = '')
     {
         return [];
     }
 
-    public static function OnOrderProduct($callbackFunc = "", $module = "", $productID = 0, $quantity = 0, $productProvider = "")
+    public static function OnOrderProduct($callbackFunc = '', $module = '', $productID = 0, $quantity = 0, $productProvider = '')
     {
         return true;
     }
@@ -221,7 +222,7 @@ class CAllSaleBasket
      * @param array $arStoreBarcodeOrderFormData
      * @return mixed array
      */
-    public static function OrderDeduction($orderID, $bUndoDeduction = false, $recurringID = 0, $bAutoDeduction = true, $arStoreBarcodeOrderFormData  = [])
+    public static function OrderDeduction($orderID, $bUndoDeduction = false, $recurringID = 0, $bAutoDeduction = true, $arStoreBarcodeOrderFormData = [])
     {
         return [];
     }
@@ -239,15 +240,15 @@ class CAllSaleBasket
     /**
      * @param array $newProperties
      * @param array $oldProperties
-     * @return null|bool
      */
-    public static function compareBasketProps($newProperties, $oldProperties)
+    public static function compareBasketProps($newProperties, $oldProperties): ?bool
     {
         return true;
     }
 
     /**
      * @internal
+     *
      * @return array
      */
     public static function getRoundFields()

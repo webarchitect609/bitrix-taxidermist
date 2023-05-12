@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace WebArch\BitrixTaxidermist\Mock;
@@ -13,6 +14,7 @@ class CAllSalePaySystem
     public static function DoLoadPaySystems($personType, $deliveryId = 0, $arDeliveryMap = null)
     {
         $arResult = [];
+
         return $arResult;
     }
 
@@ -24,21 +26,22 @@ class CAllSalePaySystem
     protected static function getAliases()
     {
         $aliases = [
-            "PSA_ID" => 'ID',
-            "PSA_ACTION_FILE" => 'ACTION_FILE',
-            "PSA_RESULT_FILE" => 'RESULT_FILE',
-            "PSA_NEW_WINDOW" => 'NEW_WINDOW',
-            "PSA_PERSON_TYPE_ID" => 'PERSON_TYPE_ID',
-            "PSA_PARAMS" => 'PARAMS',
-            "PSA_TARIF" => 'TARIF',
-            "PSA_HAVE_PAYMENT" => 'HAVE_PAYMENT',
-            "PSA_HAVE_ACTION" => 'HAVE_ACTION',
-            "PSA_HAVE_RESULT" => 'HAVE_RESULT',
-            "PSA_HAVE_PREPAY" => 'HAVE_PREPAY',
-            "PSA_HAVE_RESULT_RECEIVE" => 'HAVE_RESULT_RECEIVE',
-            "PSA_ENCODING" => 'ENCODING',
-            "PSA_LOGOTIP" => 'LOGOTIP',
+            'PSA_ID'                  => 'ID',
+            'PSA_ACTION_FILE'         => 'ACTION_FILE',
+            'PSA_RESULT_FILE'         => 'RESULT_FILE',
+            'PSA_NEW_WINDOW'          => 'NEW_WINDOW',
+            'PSA_PERSON_TYPE_ID'      => 'PERSON_TYPE_ID',
+            'PSA_PARAMS'              => 'PARAMS',
+            'PSA_TARIF'               => 'TARIF',
+            'PSA_HAVE_PAYMENT'        => 'HAVE_PAYMENT',
+            'PSA_HAVE_ACTION'         => 'HAVE_ACTION',
+            'PSA_HAVE_RESULT'         => 'HAVE_RESULT',
+            'PSA_HAVE_PREPAY'         => 'HAVE_PREPAY',
+            'PSA_HAVE_RESULT_RECEIVE' => 'HAVE_RESULT_RECEIVE',
+            'PSA_ENCODING'            => 'ENCODING',
+            'PSA_LOGOTIP'             => 'LOGOTIP',
         ];
+
         return $aliases;
     }
 
@@ -67,15 +70,16 @@ class CAllSalePaySystem
         return [];
     }
 
-    public static function GetList($arOrder = ["SORT" => "ASC", "NAME" => "ASC"], $arFilter = [], $arGroupBy = false, $arNavStartParams = false, $arSelectFields = [])
+    public static function GetList($arOrder = ['SORT' => 'ASC', 'NAME' => 'ASC'], $arFilter = [], $arGroupBy = false, $arNavStartParams = false, $arSelectFields = [])
     {
         $dbRes = new CDBResult();
+
         return $dbRes;
     }
 
     private static function getAlias($key)
     {
-        return "";
+        return '';
     }
 
     private static function getAliasBack($value)
@@ -84,11 +88,9 @@ class CAllSalePaySystem
     }
 
     /**
-     * @param $arFields
      * @throws \Exception
-     * @return bool|int
      */
-    public static function Add($arFields)
+    public static function Add($arFields): bool|int
     {
         return true;
     }

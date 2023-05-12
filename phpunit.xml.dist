@@ -1,29 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
-         backupGlobals="false"
-         backupStaticAttributes="false"
-         colors="true"
-         verbose="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.1/phpunit.xsd" bootstrap="vendor/autoload.php" executionOrder="depends,defects" beStrictAboutOutputDuringTests="true" failOnRisky="true" failOnWarning="true" cacheDirectory=".phpunit.cache" requireCoverageMetadata="false" beStrictAboutCoverageMetadata="true">
   <testsuites>
     <testsuite name="All Test Suites">
       <directory>src/test</directory>
     </testsuite>
   </testsuites>
-  <filter>
-    <whitelist>
+  <coverage>
+    <report>
+      <clover outputFile="build/logs/clover.xml"/>
+    </report>
+  </coverage>
+  <source>
+    <include>
       <directory suffix=".php">src/main</directory>
-      <exclude>
-        <directory suffix=".php">src/main/Mock</directory>
-      </exclude>
-    </whitelist>
-  </filter>
-  <logging>
-    <log type="coverage-clover" target="build/coverage.xml" />
-    <log type="coverage-html" target="build/coverage"/>
-  </logging>
+    </include>
+    <exclude>
+      <directory suffix=".php">src/main/Mock</directory>
+    </exclude>
+  </source>
 </phpunit>

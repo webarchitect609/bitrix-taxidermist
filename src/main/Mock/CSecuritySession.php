@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Mock;
 
 use ErrorException;
 
 class CSecuritySession
 {
-    const GC_AGENT_NAME = "CSecuritySession::CleanUpAgent();";
+    final public const GC_AGENT_NAME = 'CSecuritySession::CleanUpAgent();';
 
     /**
      * @var null|string
@@ -22,18 +24,20 @@ class CSecuritySession
 
     /**
      * @param string $pMessage
+     * @return void
      *
      * @throws ErrorException всегда
-     * @return void
+     *
      * @noinspection PhpDocRedundantThrowsInspection
      */
-    public static function triggerFatalError($pMessage = "")
+    public static function triggerFatalError($pMessage = ''): never
     {
         trigger_error($pMessage, E_USER_ERROR);
     }
 
     /**
      * @return string
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public static function CleanUpAgent()
@@ -50,6 +54,7 @@ class CSecuritySession
 
     /**
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public static function isOldSessionIdExist()
@@ -59,8 +64,8 @@ class CSecuritySession
 
     /**
      * @param bool $cleanUp
-     *
      * @return string
+     *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpMissingReturnTypeInspection
      */
@@ -71,8 +76,8 @@ class CSecuritySession
 
     /**
      * @param string $id
-     *
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -98,8 +103,8 @@ class CSecuritySession
 
     /**
      * @param string $class
-     *
      * @return void
+     *
      * @noinspection PhpMissingParamTypeInspection
      */
     protected static function registerHandler($class)
@@ -108,6 +113,7 @@ class CSecuritySession
 
     /**
      * @return string
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public static function createSid()

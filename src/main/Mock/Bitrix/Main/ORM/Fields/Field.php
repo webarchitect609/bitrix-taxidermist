@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpDocRedundantThrowsInspection */
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ORM\Fields;
@@ -14,7 +16,7 @@ abstract class Field
     /** @var Entity */
     protected $entity;
 
-    /** @var null|callback[] */
+    /** @var null|callable[] */
     protected $saveDataModifiers;
 
     /** @var string */
@@ -25,6 +27,7 @@ abstract class Field
      * @param array<string, mixed> $parameters deprecated, use configure* and add* methods instead
      *
      * @throws SystemException
+     *
      * @noinspection PhpMissingParamTypeInspection
      */
     public function __construct($name, $parameters = [])
@@ -33,9 +36,10 @@ abstract class Field
 
     /**
      * @param callable $modifier
+     * @return Field
      *
      * @throws SystemException
-     * @return Field
+     *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpMissingParamTypeInspection
      */
@@ -46,6 +50,7 @@ abstract class Field
 
     /**
      * Called after being initialized by Entity
+     *
      * @return null
      */
     public function postInitialize()
@@ -70,8 +75,9 @@ abstract class Field
     }
 
     /**
+     * @return null|array|callable[]
+     *
      * @throws SystemException
-     * @return null|array|callback[]
      */
     public function getSaveDataModifiers()
     {
@@ -79,10 +85,10 @@ abstract class Field
     }
 
     /**
-     * @param $modifier
+     * @return $this
      *
      * @throws SystemException
-     * @return $this
+     *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpUnusedParameterInspection
      */
@@ -93,6 +99,7 @@ abstract class Field
 
     /**
      * @return null|string
+     *
      * @deprecated
      */
     public function getDataType()

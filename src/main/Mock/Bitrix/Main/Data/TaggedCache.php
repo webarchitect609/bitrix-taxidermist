@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data;
 
 class TaggedCache
@@ -12,11 +14,9 @@ class TaggedCache
     }
 
     /**
-     * @param bool|string $tag
-     *
      * @return void
      */
-    public function clearByTag($tag)
+    public function clearByTag(bool|string $tag)
     {
     }
 
@@ -29,7 +29,6 @@ class TaggedCache
 
     /**
      * @param string $relativePath
-     *
      * @return void
      */
     public function startTagCache($relativePath)
@@ -38,7 +37,6 @@ class TaggedCache
 
     /**
      * @param string $tag
-     *
      * @return void
      */
     public function registerTag($tag)

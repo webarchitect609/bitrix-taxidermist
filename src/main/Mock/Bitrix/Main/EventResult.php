@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpMissingReturnTypeInspection */
 
 /** @noinspection PhpMissingParamTypeInspection */
@@ -7,31 +9,11 @@ namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
 
 class EventResult
 {
-    const UNDEFINED = 0;
+    final public const UNDEFINED = 0;
 
-    const SUCCESS = 1;
+    final public const SUCCESS = 1;
 
-    const ERROR = 2;
-
-    /**
-     * @var null|mixed
-     */
-    protected $moduleId;
-
-    /**
-     * @var null|mixed
-     */
-    protected $handler;
-
-    /**
-     * @var int
-     */
-    protected $type;
-
-    /**
-     * @var null|array<mixed>
-     */
-    protected $parameters;
+    final public const ERROR = 2;
 
     /**
      * EventResult constructor.
@@ -41,16 +23,17 @@ class EventResult
      * @param null|string $moduleId
      * @param null|callable $handler
      */
-    public function __construct($type, $parameters = null, $moduleId = null, $handler = null)
-    {
-        $this->type = $type;
-        $this->moduleId = $moduleId;
-        $this->handler = $handler;
-        $this->parameters = $parameters;
+    public function __construct(
+        protected $type,
+        protected ?array $parameters = null,
+        protected $moduleId = null,
+        protected $handler = null,
+    ) {
     }
 
     /**
      * @return int
+     *
      * @deprecated Use getType()
      */
     public function getResultType()
@@ -85,7 +68,7 @@ class EventResult
     /**
      * @return null|array<mixed>
      */
-    public function getParameters()
+    public function getParameters(): ?array
     {
         return [];
     }

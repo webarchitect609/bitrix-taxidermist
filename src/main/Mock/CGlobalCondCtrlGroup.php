@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpMissingReturnTypeInspection */
 
 namespace WebArch\BitrixTaxidermist\Mock;
@@ -6,23 +8,23 @@ namespace WebArch\BitrixTaxidermist\Mock;
 class CGlobalCondCtrlGroup extends CGlobalCondCtrl
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    public static function GetControlDescr()
+    public static function GetControlDescr(): array|false
     {
         return [];
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    public static function GetControlShow($arParams)
+    public static function GetControlShow($arParams): array|false
     {
         return [];
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public static function GetConditionShow($arParams)
     {
@@ -30,15 +32,15 @@ class CGlobalCondCtrlGroup extends CGlobalCondCtrl
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    public static function GetControlID()
+    public static function GetControlID(): array|string
     {
         return '';
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public static function GetAtoms()
     {
@@ -54,7 +56,7 @@ class CGlobalCondCtrlGroup extends CGlobalCondCtrl
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public static function IsGroup($strControlID = false)
     {
@@ -62,15 +64,15 @@ class CGlobalCondCtrlGroup extends CGlobalCondCtrl
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    public static function Parse($arOneCondition)
+    public static function Parse($arOneCondition): string|bool
     {
         return '';
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public static function Generate($arOneCondition, $arParams, $arControl, $arSubs = false)
     {
@@ -78,9 +80,9 @@ class CGlobalCondCtrlGroup extends CGlobalCondCtrl
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    public static function ApplyValues($arOneCondition, $arControl)
+    public static function ApplyValues($arOneCondition, $arControl): array|bool
     {
         return false;
     }

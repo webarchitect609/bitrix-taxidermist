@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Test;
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -15,8 +17,6 @@ use WebArch\BitrixTaxidermist\Taxidermist;
  * Class TaxidermistTest
  *
  * Главная проблема всего Unit-тестирования здесь: однажды создав class_alias его нельзя удалить.
- *
- * @package WebArch\BitrixTaxidermist\Test
  */
 class TaxidermistTest extends TestCase
 {
@@ -36,13 +36,10 @@ class TaxidermistTest extends TestCase
     }
 
     /**
-     * @param string $bitrixClass
-     *
      * @return void
-     *
-     * @dataProvider taxidermizeDataProvider
-     * @depends      testTaxidermizeDoesNotReachMaxNestingLevel
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('taxidermizeDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Depends('testTaxidermizeDoesNotReachMaxNestingLevel')]
     public function testTaxidermize(string $bitrixClass)
     {
         $this->assertFalse(
@@ -59,19 +56,19 @@ class TaxidermistTest extends TestCase
     /**
      * @return array<array<string>>
      */
-    public function taxidermizeDataProvider(): array
+    public static function taxidermizeDataProvider(): array
     {
         return [
-            ['Bitrix\Main\HttpApplication'],
+            ['\Bitrix\Main\HttpApplication'],
             ['\Bitrix\Main\SystemException'],
             ['\Bitrix\Main\Data\Cache'],
         ];
     }
 
     /**
-     * @depends testTaxidermize
      * @return void
      */
+    #[\PHPUnit\Framework\Attributes\Depends('testTaxidermize')]
     public function testTaxidermizeTwice()
     {
         /**
@@ -154,11 +151,11 @@ class TaxidermistTest extends TestCase
         /** @var callable $fakeAutoloadAsClosure */
         spl_autoload_register($fakeAutoloadAsClosure);
         $expectedAutoloadFunctions = spl_autoload_functions();
-        if (false === $expectedAutoloadFunctions) {
+        if (false == $expectedAutoloadFunctions) {
             $expectedAutoloadFunctions = [];
         }
-        $taxidermist = new Taxidermist();
-        $expectedAutoloadFunctions[] = [($taxidermist), 'taxidermize'];
+        $taxidermist                 = new Taxidermist();
+        $expectedAutoloadFunctions[] = $taxidermist->taxidermize(...);
         $taxidermist->registerAutoload();
         $this->assertEqualsCanonicalizing(
             $expectedAutoloadFunctions,
@@ -201,21 +198,19 @@ class TaxidermistTest extends TestCase
     {
         /** @var MockObject|Taxidermist $taxidermistMock */
         $taxidermistMock = $this->getMockBuilder(Taxidermist::class)
-                                ->onlyMethods(['getAutoloadCallable'])
-                                ->getMock();
-        /** @phpstan-ignore-next-line */
+            ->onlyMethods(['getAutoloadCallable'])
+            ->getMock();
         $taxidermistMock->expects($this->exactly(2))
-                        ->method('getAutoloadCallable')
-                        ->willReturn([$taxidermistMock, 'nonExistingMethodName']);
+            ->method('getAutoloadCallable')
+            ->willReturn([$taxidermistMock, 'nonExistingMethodName']);
 
         $this->expectException(ErrorRegisteringAutoloaderException::class);
         $this->expectExceptionCode(ErrorCode::ERROR_REGISTERING_AUTOLOADER);
-        /** @phpstan-ignore-next-line */
         $taxidermistMock->registerAutoload();
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function tearDown(): void
     {
@@ -223,9 +218,9 @@ class TaxidermistTest extends TestCase
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    protected function onNotSuccessfulTest(Throwable $t): void
+    protected function onNotSuccessfulTest(Throwable $t): never
     {
         $this->tearDownAutoload();
         parent::onNotSuccessfulTest($t);
@@ -238,7 +233,7 @@ class TaxidermistTest extends TestCase
     {
         try {
             (new Taxidermist())->removeAutoload();
-        } catch (AutoloaderNotRegisteredException $exception) {
+        } catch (AutoloaderNotRegisteredException) {
             // Не имеет значения.
         }
     }

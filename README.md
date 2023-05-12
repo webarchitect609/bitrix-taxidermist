@@ -1,5 +1,6 @@
 Битрикс таксидермист
 ====================
+
 [![Travis Build Status](https://travis-ci.com/webarchitect609/bitrix-taxidermist.svg?branch=master)](https://travis-ci.com/webarchitect609/bitrix-taxidermist)
 [![codecov](https://codecov.io/gh/webarchitect609/bitrix-taxidermist/branch/master/graph/badge.svg?token=BVYMR6SDYJ)](https://codecov.io/gh/webarchitect609/bitrix-taxidermist)
 [![PHP version](https://img.shields.io/packagist/php-v/webarchitect609/bitrix-taxidermist)](https://www.php.net/supported-versions.php)
@@ -17,14 +18,17 @@
 
 Возможности
 -----------
+
 - Автоматическое создание mock-классов Битрикс для использование в Unit-тестах
-    
+
 Установка
 ---------
+
 `composer require --dev webarchitect609/bitrix-taxidermist`
 
 Использование
 -------------
+
 ### Unit-тесты
 
 При написании Unit-теста в переопределении метода `\PHPUnit\Framework\TestCase::setUp()` или
@@ -37,7 +41,7 @@ use WebArch\BitrixTaxidermist\Taxidermist;
 
 ```
 
-Будут автоматически созданы алиасы. Например, 
+Будут автоматически созданы алиасы. Например,
 
 ```php
 /** @noinspection ALL */
@@ -57,9 +61,11 @@ class_alias('\WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data\Cache', '\Bitrix\M
 ### Ошибка при вызове `\Bitrix\Main\Application::getInstance()`
 
 Если необходимо работать с `\Bitrix\Main\Application::getInstance()`, он будет вызывать ошибку:
+
 ```
 Error: Cannot instantiate abstract class WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Application
 ```
+
 Чтобы этого избежать, следует создать требуемый объект приложения. Например, так:
 
 ```php
@@ -70,4 +76,5 @@ HttpApplication::getInstance();
 
 Лицензия и информация об авторе
 -------------------------------
+
 [BSD-3-Clause](LICENSE.md)
