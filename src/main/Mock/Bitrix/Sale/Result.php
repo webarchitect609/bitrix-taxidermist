@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Sale;
@@ -7,7 +8,7 @@ use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ErrorCollection;
 
 class Result extends \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ORM\Data\Result
 {
-    /** @var  int */
+    /** @var int */
     protected $id;
 
     protected $warnings = [];
@@ -28,6 +29,7 @@ class Result extends \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ORM\Data\Result
 
     /**
      * Returns id of added record
+     *
      * @return int
      */
     public function getId()
@@ -61,9 +63,9 @@ class Result extends \WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ORM\Data\Result
     public function getWarningMessages()
     {
         $messages = [];
+
         return $messages;
     }
-
 
     /**
      * @return bool

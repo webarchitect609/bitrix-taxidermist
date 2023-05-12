@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ORM\Fields;
 
 use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\SystemException;
@@ -21,6 +23,7 @@ class ExpressionField extends Field implements IReadable
      * @param array $parameters deprecated, use configure* and add* instead
      *
      * @throws SystemException
+     *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpMissingParamTypeInspection
      */
@@ -31,35 +34,35 @@ class ExpressionField extends Field implements IReadable
 
     /**
      * @param mixed $value
-     *
      * @return mixed
      */
     public function cast($value)
     {
         $valueField = $this->valueField;
+
         return $valueField->cast($value);
     }
 
     /**
      * @param mixed $value
-     *
      * @return mixed
      */
     public function convertValueFromDb($value)
     {
         $valueField = $this->valueField;
+
         return $valueField->convertValueFromDb($value);
     }
 
     /**
      * @param mixed $value
-     *
      * @return string
      */
     public function convertValueToDb($value)
     {
         /** @var IStorable $valueField */
         $valueField = $this->valueField;
+
         return $valueField->convertValueToDb($value);
     }
 }

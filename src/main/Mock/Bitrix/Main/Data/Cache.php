@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /** @noinspection PhpUnused */
 /** @noinspection PhpUnusedParameterInspection */
 
@@ -25,70 +27,55 @@ class Cache
     /**
      * @param int         $TTL
      * @param string      $uniqueString
-     * @param bool|string $initDir
      * @param string      $baseDir
-     *
      * @return bool
      */
-    public function initCache($TTL, $uniqueString, $initDir = false, $baseDir = "cache")
+    public function initCache($TTL, $uniqueString, bool|string $initDir = false, $baseDir = 'cache')
     {
         return false;
     }
 
     /**
-     * @param bool|int    $TTL
-     * @param bool|string $uniqueString
-     * @param bool|string $initDir
      * @param array       $vars
      * @param string      $baseDir
-     *
      * @return bool
      */
     public function startDataCache(
-        $TTL = false,
-        $uniqueString = false,
-        $initDir = false,
+        bool|int $TTL = false,
+        bool|string $uniqueString = false,
+        bool|string $initDir = false,
         $vars = [],
-        $baseDir = "cache"
+        $baseDir = 'cache',
     ) {
         return false;
     }
 
     /**
-     * @param array|bool $vars
-     *
      * @return void
      */
-    public function endDataCache($vars = false)
+    public function endDataCache(array|bool $vars = false)
     {
     }
 
-    /**
-     * @return array|bool
-     */
-    public function getVars()
+    public function getVars(): array|bool
     {
         return [];
     }
 
     /**
-     * @param bool|string $initDir
      * @param string      $baseDir
-     *
      * @return void
      */
-    public function cleanDir($initDir = false, $baseDir = "cache")
+    public function cleanDir(bool|string $initDir = false, $baseDir = 'cache')
     {
     }
 
     /**
      * @param string      $uniqueString
-     * @param bool|string $initDir
      * @param string      $baseDir
-     *
      * @return void
      */
-    public function clean($uniqueString, $initDir = false, $baseDir = "cache")
+    public function clean($uniqueString, bool|string $initDir = false, $baseDir = 'cache')
     {
     }
 

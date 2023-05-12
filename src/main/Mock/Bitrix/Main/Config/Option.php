@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /** @noinspection PhpDocRedundantThrowsInspection */
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Config;
@@ -26,15 +28,16 @@ class Option
      * @param string $name The option name.
      * @param string $default The default value to return, if a value doesn't exist.
      * @param bool|string $siteId The site ID, if the option differs for sites.
+     * @return string
      *
      * @throws Main\ArgumentNullException
      * @throws ArgumentOutOfRangeException
-     * @return string
+     *
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpMissingReturnTypeInspection
      */
-    public static function get($moduleId, $name, $default = "", $siteId = false)
+    public static function get($moduleId, $name, $default = '', bool|string $siteId = false)
     {
         return '';
     }
@@ -47,12 +50,12 @@ class Option
      * @param bool|string $siteId The site ID.
      *
      * @throws Main\ArgumentNullException
-     * @return null|string
+     *
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpMissingReturnTypeInspection
      */
-    public static function getRealValue($moduleId, $name, $siteId = false)
+    public static function getRealValue($moduleId, $name, bool|string $siteId = false): ?string
     {
         return null;
     }
@@ -61,9 +64,10 @@ class Option
      * Returns an array with default values of a module options (from a default_option.php file).
      *
      * @param string $moduleId The module ID.
+     * @return array<mixed>
      *
      * @throws ArgumentOutOfRangeException
-     * @return array<mixed>
+     *
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpMissingReturnTypeInspection
@@ -78,14 +82,15 @@ class Option
      *
      * @param string $moduleId The module ID.
      * @param bool|string $siteId The site ID, if the option differs for sites.
+     * @return array<mixed>
      *
      * @throws Main\ArgumentNullException
-     * @return array<mixed>
+     *
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpMissingReturnTypeInspection
      */
-    public static function getForModule($moduleId, $siteId = false)
+    public static function getForModule($moduleId, bool|string $siteId = false)
     {
         return [];
     }
@@ -93,9 +98,10 @@ class Option
     /**
      * @param string $moduleId
      * @param string $siteId
+     * @return void
      *
      * @throws Main\SystemException
-     * @return void
+     *
      * @noinspection PhpUnusedPrivateMethodInspection
      * @noinspection PhpMissingParamTypeInspection
      */
@@ -110,20 +116,22 @@ class Option
      * @param string $name The option name.
      * @param string $value The option value.
      * @param string $siteId The site ID, if the option depends on a site.
+     * @return void
      *
      * @throws Main\ArgumentOutOfRangeException
-     * @return void
+     *
      * @noinspection PhpMissingParamTypeInspection
      */
-    public static function set($moduleId, $name, $value = "", $siteId = "")
+    public static function set($moduleId, $name, $value = '', $siteId = '')
     {
     }
 
     /**
      * @param string $moduleId
+     * @return void
      *
      * @throws ArgumentOutOfRangeException
-     * @return void
+     *
      * @noinspection PhpUnusedPrivateMethodInspection
      * @noinspection PhpMissingParamTypeInspection
      */
@@ -133,6 +141,7 @@ class Option
 
     /**
      * @return int
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpUnusedPrivateMethodInspection
      */
@@ -148,9 +157,10 @@ class Option
      * @param array<mixed> $filter The array with filter keys:
      *        name - the name of the option;
      *        site_id - the site ID (can be empty).
+     * @return void
      *
      * @throws Main\ArgumentNullException
-     * @return void
+     *
      * @noinspection PhpMissingParamTypeInspection
      */
     public static function delete($moduleId, $filter = [])

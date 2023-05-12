@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpUnused */
 /** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpDocRedundantThrowsInspection */
@@ -23,6 +25,7 @@ class ErrorCollection extends Dictionary
 
     /**
      * Adds an array of errors to the collection.
+     *
      * @param Error[] $errors
      * @return void
      */
@@ -32,27 +35,29 @@ class ErrorCollection extends Dictionary
 
     /**
      * Returns an error with the necessary code.
+     *
      * @param int|string $code The code of the error.
-     * @return null|Error
      */
-    public function getErrorByCode($code)
+    public function getErrorByCode(int|string $code): ?Error
     {
         return null;
     }
 
     /**
      * Adds an error to the collection.
+     *
      * @param Error $error An error object.
      * @param null|int|string $offset. Offset in the array.
      * @return void
      */
-    public function setError(Error $error, $offset = null)
+    public function setError(Error $error, null|int|string $offset = null)
     {
         parent::offsetSet($offset, $error);
     }
 
     /**
      * \ArrayAccess thing.
+     *
      * @param mixed $offset
      * @param mixed $value
      */

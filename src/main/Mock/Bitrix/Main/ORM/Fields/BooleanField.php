@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpDocRedundantThrowsInspection */
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ORM\Fields;
@@ -9,7 +11,6 @@ class BooleanField extends ScalarField
 {
     /**
      * @param mixed $value
-     *
      * @return mixed
      */
     public function cast($value)
@@ -18,8 +19,6 @@ class BooleanField extends ScalarField
     }
 
     /**
-     * @param $value
-     *
      * @return mixed
      */
     public function convertValueFromDb($value)
@@ -29,9 +28,9 @@ class BooleanField extends ScalarField
 
     /**
      * @param mixed $value
+     * @return string
      *
      * @throws SystemException
-     * @return string
      */
     public function convertValueToDb($value)
     {

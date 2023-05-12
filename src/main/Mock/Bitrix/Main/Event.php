@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpUnused */
 /** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpDocRedundantThrowsInspection */
@@ -12,16 +14,6 @@ use Exception;
 
 class Event
 {
-    /**
-     * @var string
-     */
-    protected $moduleId;
-
-    /**
-     * @var string
-     */
-    protected $type;
-
     /**
      * @var null|array<mixed>|closure
      */
@@ -65,14 +57,14 @@ class Event
      *
      * @throws ArgumentTypeException
      */
-    public function __construct($moduleId, $type, $parameters = [], $filter = null)
-    {
-        $this->moduleId = $moduleId;
-        $this->type = $type;
+    public function __construct(
+        protected $moduleId,
+        protected $type,
+        $parameters = [],
+        $filter = null,
+    ) {
         $this->setParameters($parameters);
         $this->setFilter($filter);
-
-        $this->debugMode = false;
     }
 
     /**
@@ -93,35 +85,32 @@ class Event
 
     /**
      * @param array<mixed>|closure $parameters
+     * @return void
      *
      * @throws ArgumentTypeException
-     * @return void
      */
-    public function setParameters($parameters)
+    public function setParameters(array|Closure $parameters)
     {
     }
 
     /**
      * @return null|array<mixed>|Closure
      */
-    public function getParameters()
+    public function getParameters(): null|array|Closure
     {
         return [];
     }
 
     /**
      * @param string $key
-     * @param mixed $value
-     *
      * @return void
      */
-    public function setParameter($key, $value)
+    public function setParameter($key, mixed $value)
     {
     }
 
     /**
      * @param string $key
-     *
      * @return null|mixed
      */
     public function getParameter($key)
@@ -130,8 +119,9 @@ class Event
     }
 
     /**
-     * @throws ArgumentTypeException
      * @return bool
+     *
+     * @throws ArgumentTypeException
      */
     protected function loadParameters()
     {
@@ -140,17 +130,16 @@ class Event
 
     /**
      * @param null|string|string[] $filter
-     *
      * @return void
      */
-    public function setFilter($filter)
+    public function setFilter(null|string|array $filter)
     {
     }
 
     /**
      * @return null|string|string[]
      */
-    public function getFilter()
+    public function getFilter(): null|string|array
     {
         return '';
     }
@@ -164,35 +153,27 @@ class Event
     }
 
     /**
-     * @param EventResult $result
-     *
      * @return void
      */
     public function addResult(EventResult $result)
     {
     }
 
-    /**
-     * @return null|Event
-     */
-    public function getSender()
+    public function getSender(): ?Event
     {
         return $this->sender;
     }
 
     /**
-     * @param null|Event $sender
+     * @return void
      *
      * @throws SystemException
-     * @return void
      */
-    public function send($sender = null)
+    public function send(?Event $sender = null)
     {
     }
 
     /**
-     * @param Exception $exception
-     *
      * @return void
      */
     public function addException(Exception $exception)
@@ -224,7 +205,6 @@ class Event
 
     /**
      * @param array<mixed> $ar
-     *
      * @return void
      */
     public function addDebugInfo($ar)

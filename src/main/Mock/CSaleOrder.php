@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace WebArch\BitrixTaxidermist\Mock;
@@ -22,13 +23,10 @@ class CSaleOrder extends CAllSaleOrder
     /**
      * @param array $arOrder
      * @param array $arFilter
-     * @param array|bool $arGroupBy
-     * @param array|bool $arNavStartParams
      * @param array $arSelectFields
      * @param array $arOptions
-     * @return bool|CDBResult
      */
-    public static function GetList($arOrder = ["ID"=>"DESC"], $arFilter = [], $arGroupBy = false, $arNavStartParams = false, $arSelectFields = [], $arOptions = [])
+    public static function GetList($arOrder = ['ID' => 'DESC'], $arFilter = [], array|bool $arGroupBy = false, array|bool $arNavStartParams = false, $arSelectFields = [], $arOptions = []): bool|CDBResult
     {
         return new CDBResult();
     }

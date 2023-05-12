@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpMissingParentConstructorInspection */
 /** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpMissingReturnTypeInspection */
@@ -28,7 +30,6 @@ class DateTime extends Date
      * Converts date to string, using Culture and global timezone settings.
      *
      * @param null|Context\Culture $culture Culture contains datetime format.
-     *
      * @return string
      */
     public function toString(Context\Culture $culture = null)
@@ -50,7 +51,6 @@ class DateTime extends Date
      * Sets timezone object.
      *
      * @param DateTimeZone $timezone Timezone object.
-     *
      * @return DateTime
      */
     public function setTimeZone(DateTimeZone $timezone)
@@ -72,7 +72,6 @@ class DateTime extends Date
      * @param int $hour Hour value.
      * @param int $minute Minute value.
      * @param int $second Second value.
-     *
      * @return DateTime
      */
     public function setTime($hour, $minute, $second = 0)
@@ -94,7 +93,6 @@ class DateTime extends Date
      * Creates DateTime object from local user time using global timezone settings and default culture.
      *
      * @param string $timeString Full or short formatted time.
-     *
      * @return DateTime
      */
     public static function createFromUserTime($timeString)
@@ -106,7 +104,6 @@ class DateTime extends Date
      * Returns long (including time) date culture format.
      *
      * @param Context\Culture $culture Culture.
-     *
      * @return string
      */
     protected static function getCultureFormat(Context\Culture $culture)
@@ -118,7 +115,6 @@ class DateTime extends Date
      * Creates DateTime object from PHP \DateTime object.
      *
      * @param \DateTime $datetime Source object.
-     *
      * @return static
      */
     public static function createFromPhp(\DateTime $datetime)
@@ -130,7 +126,6 @@ class DateTime extends Date
      * Creates DateTime object from Unix timestamp.
      *
      * @param int $timestamp Source timestamp.
-     *
      * @return static
      */
     public static function createFromTimestamp($timestamp)
@@ -144,10 +139,8 @@ class DateTime extends Date
      *
      * @param string $timeString Full formatted time.
      * @param string $format PHP datetime format. If not specified, the format is got from the current culture.
-     *
-     * @return null|DateTime
      */
-    public static function tryParse($timeString, $format = null)
+    public static function tryParse($timeString, $format = null): ?DateTime
     {
         return null;
     }

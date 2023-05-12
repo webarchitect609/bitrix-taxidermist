@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpUnused */
 /** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpDocRedundantThrowsInspection */
@@ -18,7 +20,7 @@ trait ErrorableImplementation
     /**
      * Return true if collection has errors.
      *
-     * @return boolean
+     * @return bool
      */
     public function hasErrors()
     {
@@ -39,10 +41,8 @@ trait ErrorableImplementation
      * Returns an error with the necessary code.
      *
      * @param int|string $code The code of the error.
-     *
-     * @return null|Error
      */
-    public function getErrorByCode($code)
+    public function getErrorByCode(int|string $code): ?Error
     {
         return null;
     }

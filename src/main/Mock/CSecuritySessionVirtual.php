@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Mock;
 
 class CSecuritySessionVirtual
 {
     /**
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public static function isStorageEnabled()
@@ -15,6 +18,7 @@ class CSecuritySessionVirtual
 
     /**
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public static function Init()
@@ -25,8 +29,8 @@ class CSecuritySessionVirtual
     /**
      * @param string $savePath - unused on this handler
      * @param string $sessionName - unused on this handler
-     *
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -38,6 +42,7 @@ class CSecuritySessionVirtual
 
     /**
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public static function close()
@@ -47,8 +52,8 @@ class CSecuritySessionVirtual
 
     /**
      * @param string $id - session id, must be valid hash
-     *
      * @return string
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -61,11 +66,12 @@ class CSecuritySessionVirtual
     /**
      * @param string $id - session id, must be valid hash
      * @param array $sessionData
-     *
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
+     *
      * @phpstan-ignore-next-line
      */
     public static function write($id, $sessionData)
@@ -75,8 +81,8 @@ class CSecuritySessionVirtual
 
     /**
      * @param string $id - session id, must be valid hash
-     *
      * @return bool
+     *
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
@@ -88,8 +94,8 @@ class CSecuritySessionVirtual
 
     /**
      * @param int $maxLifeTime - unused on this handler
-     *
      * @return void
+     *
      * @noinspection PhpMissingParamTypeInspection
      */
     public static function gc($maxLifeTime)

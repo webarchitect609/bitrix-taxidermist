@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace WebArch\BitrixTaxidermist\Mock;
@@ -10,24 +11,31 @@ use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Authentication;
  */
 class CAllUser extends CDBResult
 {
-    public $LAST_ERROR = "";
+    public $LAST_ERROR = '';
+
     protected $admin;
+
     /** @var Authentication\Context */
     protected $context;
 
     protected static $kernelSession;
+
     protected static $CURRENT_USER = false;
+
     protected $justAuthorized = false;
+
     protected static $userGroupCache = [];
 
-    const STATUS_ONLINE = 'online';
-    const STATUS_OFFLINE = 'offline';
+    final public const STATUS_ONLINE = 'online';
+
+    final public const STATUS_OFFLINE = 'offline';
 
     //in seconds
-    const PHONE_CODE_OTP_INTERVAL = 30;
-    const PHONE_CODE_RESEND_INTERVAL = 60;
+    final public const PHONE_CODE_OTP_INTERVAL = 30;
 
-    public const PASSWORD_SPECIAL_CHARS = ',.<>/?;:\'"[]{}\|`~!@#$%^&*()_+=-';
+    final public const PHONE_CODE_RESEND_INTERVAL = 60;
+
+    final public const PASSWORD_SPECIAL_CHARS = ',.<>/?;:\'"[]{}\|`~!@#$%^&*()_+=-';
 
     /**
      * CUser constructor.
@@ -47,7 +55,7 @@ class CAllUser extends CDBResult
 
     public function GetSecurityPolicy()
     {
-        return "";
+        return '';
     }
 
     public function GetID()
@@ -57,37 +65,37 @@ class CAllUser extends CDBResult
 
     public function GetLogin()
     {
-        return "";
+        return '';
     }
 
     public function GetEmail()
     {
-        return "";
+        return '';
     }
 
     public function GetFullName()
     {
-        return "";
+        return '';
     }
 
     public function GetFirstName()
     {
-        return "";
+        return '';
     }
 
     public function GetLastName()
     {
-        return "";
+        return '';
     }
 
     public function GetSecondName()
     {
-        return "";
+        return '';
     }
 
     public function GetFormattedName($bUseBreaks = true, $bHTMLSpec = true)
     {
-        return "";
+        return '';
     }
 
     /**
@@ -102,7 +110,7 @@ class CAllUser extends CDBResult
         return 0;
     }
 
-    public static function GetDropDownList($strSqlSearch="and ACTIVE='Y'", $strSqlOrder="ORDER BY ID, NAME, LAST_NAME")
+    public static function GetDropDownList($strSqlSearch = "and ACTIVE='Y'", $strSqlOrder = 'ORDER BY ID, NAME, LAST_NAME')
     {
         return [];
     }
@@ -133,10 +141,10 @@ class CAllUser extends CDBResult
 
     public function GetGroups()
     {
-        return "";
+        return '';
     }
 
-    public function RequiredHTTPAuthBasic($Realm = "Bitrix")
+    public function RequiredHTTPAuthBasic($Realm = 'Bitrix')
     {
         return false;
     }
@@ -147,7 +155,7 @@ class CAllUser extends CDBResult
 
     public function LoginByHash($login, $hash)
     {
-        return "";
+        return '';
     }
 
     public function LoginByHttpAuth()
@@ -157,7 +165,7 @@ class CAllUser extends CDBResult
 
     public function LoginByDigest($arDigest)
     {
-        return ["MESSAGE"=>"<br>", "TYPE"=>"ERROR"];
+        return ['MESSAGE' => '<br>', 'TYPE' => 'ERROR'];
     }
 
     public static function UpdateDigest($ID, $pass)
@@ -171,7 +179,7 @@ class CAllUser extends CDBResult
 
     public static function AddHitAuthHash($url, $user_id = false, $site_id = false, $ttl = null)
     {
-        return "";
+        return '';
     }
 
     public static function GetHitAuthHash($urlMask, $userID = false, $siteId = null)
@@ -194,13 +202,14 @@ class CAllUser extends CDBResult
      *    fills session parameters;
      *    remembers auth;
      *    spreads auth through sites.
+     *
      * @param Authentication\Context|int $context Contains user id.
      * @param bool $bSave Save authorization in cookies.
      * @param bool $bUpdate Update last login information in DB.
      * @param null|string $applicationId An application password ID.
      * @return bool
      */
-    public function Authorize($context, $bSave = false, $bUpdate = true, $applicationId = null, $onlyActive = true)
+    public function Authorize(Bitrix\Main\Authentication\Context|int $context, $bSave = false, $bUpdate = true, ?string $applicationId = null, $onlyActive = true)
     {
         return true;
     }
@@ -232,25 +241,24 @@ class CAllUser extends CDBResult
 
     /**
      * Authenticates the user and then authorizes him
+     *
      * @param string $login
      * @param string $password
      * @param string $remember
      * @param string $password_original
-     * @return array|bool
      */
-    public function Login($login, $password, $remember="N", $password_original="Y")
+    public function Login($login, $password, $remember = 'N', $password_original = 'Y'): array|bool
     {
         return true;
     }
 
     /**
      * Internal authentication by login and password.
+     *
      * @param array $arParams
-     * @param array|bool $result_message
-     * @param null|Authentication\Context $context
      * @return int User ID on success or 0 on failure. Additionally, $result_message will hold an error.
      */
-    public static function LoginInternal(&$arParams, &$result_message = true, $context = null)
+    public static function LoginInternal(&$arParams, array|bool &$result_message = true, ?Bitrix\Main\Authentication\Context $context = null)
     {
         return 0;
     }
@@ -264,7 +272,7 @@ class CAllUser extends CDBResult
         return true;
     }
 
-    public function LoginByOtp($otp, $remember_otp = "N", $captcha_word = "", $captcha_sid = "")
+    public function LoginByOtp($otp, $remember_otp = 'N', $captcha_word = '', $captcha_sid = '')
     {
         return true;
     }
@@ -274,14 +282,14 @@ class CAllUser extends CDBResult
         return false;
     }
 
-    public function ChangePassword($LOGIN, $CHECKWORD, $PASSWORD, $CONFIRM_PASSWORD, $SITE_ID=false, $captcha_word = "", $captcha_sid = 0, $authActions = true, $phoneNumber = "", $currentPassword = "")
+    public function ChangePassword($LOGIN, $CHECKWORD, $PASSWORD, $CONFIRM_PASSWORD, $SITE_ID = false, $captcha_word = '', $captcha_sid = 0, $authActions = true, $phoneNumber = '', $currentPassword = '')
     {
-        return ["MESSAGE"=>"<br>", "TYPE"=>"OK"];
+        return ['MESSAGE' => '<br>', 'TYPE' => 'OK'];
     }
 
     public static function GeneratePasswordByPolicy(array $groups)
     {
-        return "";
+        return '';
     }
 
     public static function CheckPasswordAgainstPolicy($password, $arPolicy, $userId = null)
@@ -292,16 +300,16 @@ class CAllUser extends CDBResult
     /**
      * Sends a profile information to email
      */
-    public static function SendUserInfo($ID, $SITE_ID, $MSG, $bImmediate=false, $eventName="USER_INFO", $checkword = null)
+    public static function SendUserInfo($ID, $SITE_ID, $MSG, $bImmediate = false, $eventName = 'USER_INFO', $checkword = null)
     {
     }
 
-    public static function SendPassword($LOGIN, $EMAIL, $SITE_ID = false, $captcha_word = "", $captcha_sid = 0, $phoneNumber = "", $shortCode = false)
+    public static function SendPassword($LOGIN, $EMAIL, $SITE_ID = false, $captcha_word = '', $captcha_sid = 0, $phoneNumber = '', $shortCode = false)
     {
         return true;
     }
 
-    public function Register($USER_LOGIN, $USER_NAME, $USER_LAST_NAME, $USER_PASSWORD, $USER_CONFIRM_PASSWORD, $USER_EMAIL, $SITE_ID = false, $captcha_word = "", $captcha_sid = 0, $bSkipConfirm = false, $USER_PHONE_NUMBER = "")
+    public function Register($USER_LOGIN, $USER_NAME, $USER_LAST_NAME, $USER_PASSWORD, $USER_CONFIRM_PASSWORD, $USER_EMAIL, $SITE_ID = false, $captcha_word = '', $captcha_sid = 0, $bSkipConfirm = false, $USER_PHONE_NUMBER = '')
     {
         return true;
     }
@@ -344,9 +352,9 @@ class CAllUser extends CDBResult
      * @param array|true $deleteParms Parameters to delete; if true, delete all
      * @return string
      */
-    public static function getLogoutParams($deleteParms = [])
+    public static function getLogoutParams(array|bool $deleteParms = [])
     {
-        return "";
+        return '';
     }
 
     public function Logout()
@@ -375,10 +383,9 @@ class CAllUser extends CDBResult
 
     /**
      * @param array $arFields
-     * @param bool|int $ID
      * @return string
      */
-    public static function CheckInternalFields($arFields, $ID = false)
+    public static function CheckInternalFields($arFields, bool|int $ID = false)
     {
         return true;
     }
@@ -409,7 +416,7 @@ class CAllUser extends CDBResult
      * @param int $user_id
      * @param array|int $groups A single number, or an array of numbers, or an array of arrays("GROUP_ID"=>$val, "DATE_ACTIVE_FROM"=>$val, "DATE_ACTIVE_TO"=>$val)
      */
-    public static function AppendUserGroup($user_id, $groups)
+    public static function AppendUserGroup($user_id, array|int $groups)
     {
     }
 
@@ -426,6 +433,7 @@ class CAllUser extends CDBResult
     public static function GetExternalAuthList()
     {
         $result = new CDBResult;
+
         return $result;
     }
 
@@ -449,11 +457,10 @@ class CAllUser extends CDBResult
         return true;
     }
 
-    public static function GetFileOperations($arPath, $arGroups=false)
+    public static function GetFileOperations($arPath, $arGroups = false)
     {
         return [];
     }
-
 
     public function CanDoFileOperation($op_name, $arPath)
     {
@@ -462,7 +469,7 @@ class CAllUser extends CDBResult
 
     public static function UserTypeRightsCheck($entity_id)
     {
-        return "W";
+        return 'W';
     }
 
     public function CanAccess($arCodes)
@@ -477,17 +484,17 @@ class CAllUser extends CDBResult
 
     public static function CleanUpAgent()
     {
-        return "CUser::CleanUpAgent();";
+        return 'CUser::CleanUpAgent();';
     }
 
     public static function DeactivateAgent()
     {
-        return "CUser::DeactivateAgent();";
+        return 'CUser::DeactivateAgent();';
     }
 
     public static function UnblockAgent($userId)
     {
-        return "";
+        return '';
     }
 
     public static function GetActiveUsersCount()
@@ -520,14 +527,14 @@ class CAllUser extends CDBResult
         return [];
     }
 
-    public static function SearchUserByName($arName, $email = "", $bLoginMode = false)
+    public static function SearchUserByName($arName, $email = '', $bLoginMode = false)
     {
         return new CDBResult();
     }
 
     public static function FormatName($NAME_TEMPLATE, $arUser, $bUseLogin = false, $bHTMLSpec = true)
     {
-        return "";
+        return '';
     }
 
     public static function clearUserGroupCache($ID = false)
@@ -547,7 +554,7 @@ class CAllUser extends CDBResult
      * @param int $userId
      * @return array|bool [code, phone_number]
      */
-    public static function GeneratePhoneCode($userId)
+    public static function GeneratePhoneCode($userId): array|bool
     {
         return false;
     }
@@ -557,7 +564,7 @@ class CAllUser extends CDBResult
      * @param string $code
      * @return bool|int User ID on success, false on error
      */
-    public static function VerifyPhoneCode($phoneNumber, $code)
+    public static function VerifyPhoneCode($phoneNumber, $code): bool|int
     {
         return false;
     }

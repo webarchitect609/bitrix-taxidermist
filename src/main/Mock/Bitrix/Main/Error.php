@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpUnused */
 /** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpDocRedundantThrowsInspection */
@@ -9,13 +11,14 @@ namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
 
 use JsonSerializable;
 
-class Error implements JsonSerializable
+class Error implements JsonSerializable, \Stringable
 {
     /** @var int|string */
     protected $code;
 
     /** @var string */
     protected $message;
+
     /**
      * @var null
      */
@@ -35,15 +38,15 @@ class Error implements JsonSerializable
 
     /**
      * Returns the code of the error.
-     * @return int|string
      */
-    public function getCode()
+    public function getCode(): int|string
     {
         return $this->code;
     }
 
     /**
      * Returns the message of the error.
+     *
      * @return string
      */
     public function getMessage()
@@ -59,23 +62,26 @@ class Error implements JsonSerializable
         return $this->customData;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getMessage();
     }
 
     /**
      * Specify data which should be serialized to JSON
+     *
      * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     *
      * @return array data which can be serialized by <b>json_encode</b>,
      * which is a value of any type other than a resource.
+     *
      * @since 5.4.0
      */
     public function jsonSerialize()
     {
         return [
-            'message' => $this->getMessage(),
-            'code' => $this->getCode(),
+            'message'    => $this->getMessage(),
+            'code'       => $this->getCode(),
             'customData' => $this->getCustomData(),
         ];
     }

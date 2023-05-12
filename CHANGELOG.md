@@ -1,5 +1,12 @@
 # Change Log
 
+1.0.0
+------
+
+- поддержка `PHP ^8.1` и `PHP ^8.2`
+- Rector (getrector.com/)
+- PhpUnit v10
+
 0.2.0
 ------
 
@@ -17,7 +24,7 @@
 0.1.18
 ------
 
-### Исправлено:
+### Исправлено
 
 - `\Bitrix\Main\Type\DateTime` не наследовался от `\Bitrix\Main\Type\Date`.
 
@@ -62,21 +69,21 @@
 0.1.12
 ------
 
-### Исправлено:
+### Исправлено
 
 - поддержка `PHP ^8.0`
 
 0.1.10
 ------
 
-### Добавлено:
+### Добавлено
 
 - Поддержка `PHP 8.0`
 
 0.1.9
 -----
 
-### Добавлено:
+### Добавлено
 
 - Классы работы с сессиями: `\CSecuritySession`, `\CSecuritySessionDB`, `\CSecuritySessionMC` и
   `\CSecuritySessionVirtual`
@@ -87,7 +94,7 @@
 0.1.8
 -----
 
-### Добавлено:
+### Добавлено
 
 - `\Bitrix\Main\ORM\Fields\Field::$dataType`
 - `\Bitrix\Main\ORM\Fields\Field::getDataType()`
@@ -95,7 +102,7 @@
 0.1.7
 -----
 
-### Добавлено:
+### Добавлено
 
 - Макет класса `\Bitrix\Main\ORM\Fields\ExpressionField`
 - Расширены `\Bitrix\Main\DB\SqlExpression`, `\Bitrix\Main\ORM\Fields\ScalarField` и `\Bitrix\Main\ORM\Fields\Field`
@@ -103,21 +110,21 @@
 0.1.6
 -----
 
-### Добавлено:
+### Добавлено
 
 - Добавлены методы `CDBResultMysql::Fetch()` и `\Bitrix\Main\ORM\Query\Query::setLimit()`
 
 0.1.5
 -----
 
-### Добавлено:
+### Добавлено
 
 - Добавлены макеты `CUserTypeEntity`, `CDBResult`, `CUserTypeEntity` и другие.
 
 0.1.4
 -----
 
-### Добавлено:
+### Добавлено
 
 - Макеты методов `\Bitrix\Main\ORM\Fields\Field::getName()` и `\Bitrix\Main\ORM\Fields\Field::getEntity()` и
   соответствующие им поля.
@@ -125,7 +132,7 @@
 0.1.3
 -----
 
-### Добавлено:
+### Добавлено
 
 - Добавлен макет метода `\Bitrix\Main\Data\Cache::getCacheEngineType()`
 - Добавлено перечисление поддерживаемых Битриксом типов кеширования `\WebArch\BitrixTaxidermist\Enum\CacheEngineType`
@@ -133,7 +140,7 @@
 0.1.0
 -----
 
-### Добавлено:
+### Добавлено
 
 - Методы `\WebArch\BitrixTaxidermist\Taxidermist::registerAutoload()` и
   `\WebArch\BitrixTaxidermist\Taxidermist::removeAutoload()` для установки и удаления автозагрузчика классов
@@ -152,7 +159,7 @@
 0.0.2
 -----
 
-### Исправлено:
+### Исправлено
 
 - Ошибка `PHP Warning: Cannot declare class` при повторном вызове
   `\WebArch\BitrixTaxidermist\Taxidermist::taxidermize()` с тем же аргументом
@@ -160,13 +167,13 @@
 0.0.1
 -----
 
-### Добавлено:
+### Добавлено
 
 - Основная функциональность изготовления имитаций через метод
   `\WebArch\BitrixTaxidermist\Taxidermist::taxidermize()`
 - Имитации классов:
-    - `\Bitrix\Main\SystemException`
-    - `\Bitrix\Main\Application`
-    - `\Bitrix\Main\HttpApplication`
-    - `\Bitrix\Main\Data\Cache`
-    - `\Bitrix\Main\Data\TaggedCache`
+  - `\Bitrix\Main\SystemException`
+  - `\Bitrix\Main\Application`
+  - `\Bitrix\Main\HttpApplication`
+  - `\Bitrix\Main\Data\Cache`
+  - `\Bitrix\Main\Data\TaggedCache`

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace WebArch\BitrixTaxidermist\Mock;
@@ -32,7 +33,6 @@ class CSaleBasket extends CAllSaleBasket
      * Adds item to the basket.
      * Automatically adds Set items to the basket if Set parents is added
      *
-     * @param $arFields
      * @return mixed - int ID or false
      */
     public static function Add($arFields)

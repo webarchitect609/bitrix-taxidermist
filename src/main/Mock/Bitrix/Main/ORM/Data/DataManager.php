@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpDocRedundantThrowsInspection */
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ORM\Data;
@@ -32,9 +34,10 @@ abstract class DataManager
     /**
      * Creates and returns the Query object for the entity
      *
+     * @return Query
+     *
      * @throws ArgumentException
      * @throws SystemException
-     * @return Query
      */
     public static function query()
     {
@@ -44,9 +47,10 @@ abstract class DataManager
     /**
      * Returns entity object
      *
+     * @return Entity
+     *
      * @throws ArgumentException
      * @throws SystemException
-     * @return Entity
      */
     public static function getEntity()
     {

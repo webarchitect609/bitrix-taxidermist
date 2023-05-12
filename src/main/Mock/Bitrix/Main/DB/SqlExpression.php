@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpDocRedundantThrowsInspection */
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\DB;
 
 use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ArgumentException;
 
-class SqlExpression
+class SqlExpression implements \Stringable
 {
     /** @var string */
     protected $expression;
@@ -27,6 +29,7 @@ class SqlExpression
      * @param string,... $args Substitutes.
      *
      * @throws ArgumentException
+     *
      * @noinspection PhpDocSignatureInspection
      */
     public function __construct(string $expression, string ...$args)
@@ -47,8 +50,8 @@ class SqlExpression
      * Used by compile method to replace placeholders with values.
      *
      * @param array $matches Matches found by preg_replace.
-     *
      * @return string
+     *
      * @noinspection PhpMissingParamTypeInspection
      * @noinspection PhpUnusedParameterInspection
      */
@@ -57,7 +60,7 @@ class SqlExpression
         return '';
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->compile();
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpDocRedundantThrowsInspection */
 /** @noinspection PhpUnused */
 /** @noinspection PhpMissingParamTypeInspection */
@@ -29,7 +31,7 @@ class EventManager
     /**
      * @var string
      */
-    protected static $cacheKey = "b_module_to_module";
+    protected static $cacheKey = 'b_module_to_module';
 
     protected function __construct()
     {
@@ -37,12 +39,13 @@ class EventManager
 
     /**
      * @static
+     *
      * @return EventManager
      */
     public static function getInstance()
     {
-        if (!isset(self::$instance)) {
-            $c = __CLASS__;
+        if (! isset(self::$instance)) {
+            $c              = self::class;
             self::$instance = new $c;
         }
 
@@ -53,13 +56,11 @@ class EventManager
      * @param string $fromModuleId
      * @param string $eventType
      * @param callable $callback
-     * @param bool|string $includeFile
      * @param int $sort
      * @param int $version
-     *
      * @return int|mixed
      */
-    protected function addEventHandlerInternal($fromModuleId, $eventType, $callback, $includeFile, $sort, $version)
+    protected function addEventHandlerInternal($fromModuleId, $eventType, $callback, bool|string $includeFile, $sort, $version)
     {
         return 0;
     }
@@ -68,12 +69,10 @@ class EventManager
      * @param string $fromModuleId
      * @param string $eventType
      * @param callable $callback
-     * @param bool|string $includeFile
      * @param int $sort
-     *
      * @return int
      */
-    public function addEventHandler($fromModuleId, $eventType, $callback, $includeFile = false, $sort = 100)
+    public function addEventHandler($fromModuleId, $eventType, $callback, bool|string $includeFile = false, $sort = 100)
     {
         return $this->addEventHandlerInternal($fromModuleId, $eventType, $callback, $includeFile, $sort, 2);
     }
@@ -82,12 +81,10 @@ class EventManager
      * @param string $fromModuleId
      * @param string $eventType
      * @param callable $callback
-     * @param bool|string $includeFile
      * @param int $sort
-     *
      * @return int
      */
-    public function addEventHandlerCompatible($fromModuleId, $eventType, $callback, $includeFile = false, $sort = 100)
+    public function addEventHandlerCompatible($fromModuleId, $eventType, $callback, bool|string $includeFile = false, $sort = 100)
     {
         return $this->addEventHandlerInternal($fromModuleId, $eventType, $callback, $includeFile, $sort, 1);
     }
@@ -96,7 +93,6 @@ class EventManager
      * @param string $fromModuleId
      * @param string $eventType
      * @param int $iEventHandlerKey
-     *
      * @return bool
      */
     public function removeEventHandler($fromModuleId, $eventType, $iEventHandlerKey)
@@ -112,17 +108,16 @@ class EventManager
      * @param string $toMethod
      * @param string $toPath
      * @param array<mixed> $toMethodArg
-     *
      * @return void
      */
     public function unRegisterEventHandler(
         $fromModuleId,
         $eventType,
         $toModuleId,
-        $toClass = "",
-        $toMethod = "",
-        $toPath = "",
-        $toMethodArg = []
+        $toClass = '',
+        $toMethod = '',
+        $toPath = '',
+        $toMethodArg = [],
     ) {
     }
 
@@ -135,18 +130,17 @@ class EventManager
      * @param int $sort
      * @param string $toPath
      * @param array<string> $toMethodArg
-     *
      * @return void
      */
     public function registerEventHandler(
         $fromModuleId,
         $eventType,
         $toModuleId,
-        $toClass = "",
-        $toMethod = "",
+        $toClass = '',
+        $toMethod = '',
         $sort = 100,
-        $toPath = "",
-        $toMethodArg = []
+        $toPath = '',
+        $toMethodArg = [],
     ) {
     }
 
@@ -159,18 +153,17 @@ class EventManager
      * @param int $sort
      * @param string $toPath
      * @param array<mixed> $toMethodArg
-     *
      * @return void
      */
     public function registerEventHandlerCompatible(
         $fromModuleId,
         $eventType,
         $toModuleId,
-        $toClass = "",
-        $toMethod = "",
+        $toClass = '',
+        $toMethod = '',
         $sort = 100,
-        $toPath = "",
-        $toMethodArg = []
+        $toPath = '',
+        $toMethodArg = [],
     ) {
     }
 
@@ -184,7 +177,6 @@ class EventManager
      * @param string $toPath
      * @param string $toMethodArg
      * @param int $version
-     *
      * @return void
      */
     protected function registerEventHandlerInternal(
@@ -196,13 +188,12 @@ class EventManager
         $sort,
         $toPath,
         $toMethodArg,
-        $version
+        $version,
     ) {
     }
 
     /**
      * @param array<mixed> $arEvent
-     *
      * @return string
      */
     protected function formatEventName($arEvent)
@@ -211,16 +202,18 @@ class EventManager
     }
 
     /**
-     * @throws SystemException
      * @return void
+     *
+     * @throws SystemException
      */
     protected function loadEventHandlers()
     {
     }
 
     /**
-     * @throws SystemException
      * @return void
+     *
+     * @throws SystemException
      */
     protected function clearLoadedHandlers()
     {
@@ -230,9 +223,9 @@ class EventManager
      * @param string $eventModuleId
      * @param string $eventType
      * @param null|array<mixed> $filter
+     * @return array<mixed>
      *
      * @throws SystemException
-     * @return array<mixed>
      */
     public function findEventHandlers($eventModuleId, $eventType, array $filter = null)
     {
@@ -240,10 +233,9 @@ class EventManager
     }
 
     /**
-     * @param Event $event
+     * @return void
      *
      * @throws SystemException
-     * @return void
      */
     public function send(Event $event)
     {
@@ -251,10 +243,9 @@ class EventManager
 
     /**
      * @param array<mixed> $handler
-     * @param Event $event
+     * @return void
      *
      * @throws Exception
-     * @return void
      */
     protected function sendToEventHandler(array $handler, Event $event)
     {

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpDocRedundantThrowsInspection */
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
@@ -30,12 +32,13 @@ abstract class Application
     /**
      * Returns current instance of the Application.
      *
-     * @throws SystemException
      * @return Application
+     *
+     * @throws SystemException
      */
     public static function getInstance()
     {
-        if (!isset(static::$instance)) {
+        if (! isset(static::$instance)) {
             static::$instance = new static();
         }
 

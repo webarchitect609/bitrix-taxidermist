@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
@@ -11,7 +12,7 @@ class Result
     /** @var ErrorCollection */
     protected $errors;
 
-    /** @var  array */
+    /** @var array */
     protected $data = [];
 
     public function __construct()
@@ -35,7 +36,6 @@ class Result
     /**
      * Adds the error.
      *
-     * @param Error $error
      * @return $this
      */
     public function addError(Error $error)
@@ -71,6 +71,7 @@ class Result
     public function getErrorMessages()
     {
         $messages = [];
+
         return $messages;
     }
 
@@ -87,7 +88,7 @@ class Result
 
     /**
      * Sets data of the result.
-     * @param array $data
+     *
      * @return $this
      */
     public function setData(array $data)
@@ -97,6 +98,7 @@ class Result
 
     /**
      * Returns data array saved into the result.
+     *
      * @return array
      */
     public function getData()

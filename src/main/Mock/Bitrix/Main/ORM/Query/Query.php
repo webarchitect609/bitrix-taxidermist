@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpDocRedundantThrowsInspection */
 
 /** @noinspection PhpUnusedParameterInspection */
@@ -26,7 +28,6 @@ class Query
     /**
      * Sets a list of fields for SELECT clause
      *
-     * @param array $select
      *
      * @return Query
      */
@@ -38,7 +39,6 @@ class Query
     /**
      * Sets a list of filters for WHERE clause
      *
-     * @param array $filter
      *
      * @return Query
      */
@@ -51,7 +51,6 @@ class Query
      * Sets a limit for LIMIT n clause
      *
      * @param int $limit
-     *
      * @return Query
      */
     public function setLimit($limit)
@@ -62,9 +61,10 @@ class Query
     /**
      * Builds and executes the query and returns the result
      *
+     * @return Result
+     *
      * @throws ObjectPropertyException
      * @throws SystemException
-     * @return Result
      */
     public function exec()
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\ORM\Fields;
 
 use WebArch\BitrixTaxidermist\Mock\Bitrix\Main\DB\SqlExpression;
@@ -16,6 +18,7 @@ abstract class ScalarField extends Field implements IStorable
      * @param array<string, mixed> $parameters deprecated, use configure* and add* methods instead
      *
      * @throws SystemException
+     *
      * @noinspection PhpMissingParamTypeInspection
      */
     public function __construct($name, $parameters = [])
@@ -24,9 +27,9 @@ abstract class ScalarField extends Field implements IStorable
     }
 
     /**
-     * @param boolean $value
-     *
+     * @param bool $value
      * @return $this
+     *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpMissingParamTypeInspection
      */
@@ -45,8 +48,8 @@ abstract class ScalarField extends Field implements IStorable
 
     /**
      * @param callable|mixed $value
-     *
      * @return $this
+     *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpMissingParamTypeInspection
      */
@@ -57,8 +60,8 @@ abstract class ScalarField extends Field implements IStorable
 
     /**
      * @param array<mixed> $row ORM data row in case of dependency value on other values
-     *
      * @return null|callable|mixed
+     *
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpDocSignatureInspection
      */
@@ -68,17 +71,15 @@ abstract class ScalarField extends Field implements IStorable
     }
 
     /**
-     * @param mixed $value
-     *
      * @return bool
      */
-    public function isValueEmpty($value)
+    public function isValueEmpty(mixed $value)
     {
         if ($value instanceof SqlExpression) {
             $value = $value->compile();
         }
 
-        return (strval($value) === '');
+        return strval($value) === '';
     }
 
     public function getColumnName()

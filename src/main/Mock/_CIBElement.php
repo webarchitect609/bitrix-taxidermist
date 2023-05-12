@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace WebArch\BitrixTaxidermist\Mock;
@@ -6,7 +7,8 @@ namespace WebArch\BitrixTaxidermist\Mock;
 class _CIBElement
 {
     public $fields;
-    public $props=false;
+
+    public $props = false;
 
     public function GetFields()
     {
@@ -14,11 +16,10 @@ class _CIBElement
     }
 
     /**
-     * @param array|bool $arOrder
      * @param array $arFilter
      * @return array
      */
-    public function GetProperties($arOrder = false, $arFilter = [])
+    public function GetProperties(array|bool $arOrder = false, $arFilter = [])
     {
         return [];
     }

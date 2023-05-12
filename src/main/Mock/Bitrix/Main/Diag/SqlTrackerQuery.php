@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Diag;
 
 use ArrayAccess;
@@ -7,37 +9,26 @@ use ArrayAccess;
 class SqlTrackerQuery implements ArrayAccess
 {
     /**
-     * @param mixed $offset
-     *
      * @return bool|void
      */
-    public function offsetExists($offset)
+    public function offsetExists(mixed $offset)
     {
         return false;
     }
 
     /**
-     * @param mixed $offset
-     *
      * @return mixed|void
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset)
     {
         return null;
     }
 
-    /**
-     * @param mixed $offset
-     * @param mixed $value
-     */
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value)
     {
     }
 
-    /**
-     * @param mixed $offset
-     */
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset)
     {
     }
 }

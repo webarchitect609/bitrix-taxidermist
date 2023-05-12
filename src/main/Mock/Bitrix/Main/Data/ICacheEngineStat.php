@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpUnused */
 /** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpDocRedundantThrowsInspection */
@@ -10,12 +12,12 @@ namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main\Data;
 interface ICacheEngineStat
 {
     /**
-     * @return false|integer
+     * @return false|int
      */
     public function getReadBytes();
 
     /**
-     * @return false|integer
+     * @return false|int
      */
     public function getWrittenBytes();
 

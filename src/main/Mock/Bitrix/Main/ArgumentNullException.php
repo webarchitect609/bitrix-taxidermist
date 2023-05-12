@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
 
 use Exception;
@@ -10,7 +12,6 @@ class ArgumentNullException extends ArgumentException
      * ArgumentNullException constructor.
      *
      * @param string $parameter
-     * @param null|Exception $previous
      *
      * @noinspection PhpMissingParamTypeInspection
      */

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist;
 
 use Symfony\Component\Finder\Finder;
@@ -10,7 +12,6 @@ use WebArch\BitrixTaxidermist\Exception\ErrorRegisteringAutoloaderException;
 
 /**
  * Class Taxidermist
- * @package WebArch\BitrixTaxidermist
  */
 class Taxidermist
 {
@@ -21,12 +22,12 @@ class Taxidermist
     /**
      * @var bool Признак регистрации автозагрузчика.
      */
-    private static $autoloadRegistered = false;
+    private static bool $autoloadRegistered = false;
 
     /**
      * @var bool Признак вызова проверки существования класса. Используется для защиты от бесконечной рекурсии.
      */
-    private static $classExistsCalled = false;
+    private static bool $classExistsCalled = false;
 
     /**
      * Заменяет макетами(mocks, "чучелами") все поддерживаемые библиотекой классы Битрикс.
@@ -34,9 +35,9 @@ class Taxidermist
     public function taxidermizeAll(): void
     {
         $finder = Finder::create()
-                        ->in(__DIR__ . '/Mock')
-                        ->files()
-                        ->name('*.php');
+            ->in(__DIR__.'/Mock')
+            ->files()
+            ->name('*.php');
         foreach ($finder as $splFileInfo) {
             $this->taxidermize(
                 str_replace(
@@ -88,13 +89,14 @@ class Taxidermist
                 $this->getAutoloadCallableAsString()
             );
         }
-        /** @var array<array<object|string>> $functions */
+        /** @var iterable<array<object|string>> $functions */
         $functions = spl_autoload_functions();
         foreach ($functions as $function) {
-            if (!is_array($function) || count($function) !== 2) {
+            if (! is_array($function) || count($function) !== 2) {
                 continue;
             }
             if ($function[0] instanceof $this && $function[1] === self::AUTOLOAD_METHOD) {
+                /** @phpstan-ignore-next-line */
                 spl_autoload_unregister($function);
             }
         }
@@ -105,10 +107,10 @@ class Taxidermist
      * Заменяет макетами(mocks, "чучелами") требуемый класс $bitrixClass при помощи class_alias().
      *
      * @param string $bitrixClass Класс Битрикс. Например, \Bitrix\Main\Application
-     *
      * @return null|bool bool true - успешно установлен алиас; false - алиас не установлен, т.к. $bitrixClass
      *     существует или алиас уже был создан ранее; null - невозможно найти подходящий класс для создания алиаса на
      *     него.
+     *
      * @noinspection SpellCheckingInspection
      */
     public function taxidermize(string $bitrixClass): ?bool
@@ -125,8 +127,8 @@ class Taxidermist
 
             return false;
         }
-        $mockClass = self::MOCK_NAMESPACE . ltrim($bitrixClass, '\\');
-        if (!class_exists($mockClass) && !interface_exists($mockClass) && !trait_exists($mockClass)) {
+        $mockClass = self::MOCK_NAMESPACE.ltrim($bitrixClass, '\\');
+        if (! class_exists($mockClass) && ! interface_exists($mockClass) && ! trait_exists($mockClass)) {
             self::$classExistsCalled = false;
 
             return null;
@@ -145,17 +147,13 @@ class Taxidermist
         return [$this, self::AUTOLOAD_METHOD];
     }
 
-    /**
-     * @return string
-     */
     private function getAutoloadCallableAsString(): string
     {
         $autoloadCallable = $this->getAutoloadCallable();
 
         return sprintf(
             '%s::%s()',
-            /** @phpstan-ignore-next-line */
-            get_class($autoloadCallable[0]),
+            $autoloadCallable[0]::class,
             /** @phpstan-ignore-next-line */
             $autoloadCallable[1]
         );

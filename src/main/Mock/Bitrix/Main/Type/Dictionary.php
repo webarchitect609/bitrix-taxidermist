@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /** @noinspection PhpUnused */
 /** @noinspection PhpUnusedParameterInspection */
 /** @noinspection PhpDocRedundantThrowsInspection */
@@ -20,8 +22,6 @@ class Dictionary implements ArrayAccess, Iterator, Countable
 
     /**
      * Creates object.
-     *
-     * @param null|array $values
      */
     public function __construct(array $values = null)
     {
@@ -31,9 +31,8 @@ class Dictionary implements ArrayAccess, Iterator, Countable
      * Returns any variable by its name. Null if variable is not set.
      *
      * @param string $name
-     * @return null|array|string
      */
-    public function get($name)
+    public function get($name): null|array|string
     {
         return null;
     }
@@ -138,6 +137,7 @@ class Dictionary implements ArrayAccess, Iterator, Countable
 
     /**
      * Returns true if the dictionary is empty.
+     *
      * @return bool
      */
     public function isEmpty()

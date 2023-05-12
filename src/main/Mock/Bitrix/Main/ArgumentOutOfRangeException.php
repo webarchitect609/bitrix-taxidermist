@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace WebArch\BitrixTaxidermist\Mock\Bitrix\Main;
 
 use Exception;
@@ -22,7 +24,6 @@ class ArgumentOutOfRangeException extends ArgumentException
      * @param string $parameter Argument that generates exception
      * @param null $lowerLimit Either lower limit of the allowable range of values or an array of allowable values
      * @param null $upperLimit Upper limit of the allowable values
-     * @param null|Exception $previous
      *
      * @noinspection PhpMissingParamTypeInspection
      */
@@ -30,7 +31,7 @@ class ArgumentOutOfRangeException extends ArgumentException
     {
         // @phpstan-ignore-next-line
         if (is_array($lowerLimit)) {
-            $message = sprintf("The value of an argument '%s' is outside the allowable range of values: %s", $parameter, implode(", ", $lowerLimit));
+            $message = sprintf("The value of an argument '%s' is outside the allowable range of values: %s", $parameter, implode(', ', $lowerLimit));
         // @phpstan-ignore-next-line
         } elseif (($lowerLimit !== null) && ($upperLimit !== null)) {
             $message = sprintf("The value of an argument '%s' is outside the allowable range of values: from %s to %s", $parameter, $lowerLimit, $upperLimit);
@@ -52,6 +53,7 @@ class ArgumentOutOfRangeException extends ArgumentException
 
     /**
      * @return null|array|mixed
+     *
      * @noinspection PhpMissingReturnTypeInspection
      */
     public function getLowerLimitType()
